@@ -19,6 +19,7 @@ public class SVGWriter {
 			FileWriter fileWriter = new FileWriter(absolutePath);
 			String content = " "; // TODO: ce qui va être écrit dans mon fichier SVG
 			fileWriter.write(content);
+			fileWriter.close();
 		} catch (IOException exc) {
 			// TODO: excpetion handling
 		}
