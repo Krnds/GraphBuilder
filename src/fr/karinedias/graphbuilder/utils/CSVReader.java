@@ -79,7 +79,7 @@ public class CSVReader {
 	
 //getter 
 	public String getFileName() {
-		return this.fileName;
+		return CSVReader.fileName; //correct de faire ça ?
 	}
 
 }
