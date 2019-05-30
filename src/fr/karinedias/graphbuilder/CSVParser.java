@@ -115,14 +115,16 @@ public class CSVParser extends CSVReader {
 		ArrayList<Integer> points = new ArrayList<Integer>();
 		BufferedReader br = getBufferedReader();
 		String line = br.readLine();
-		String[] dataArray;
+		
 		
 		int nLines = 0;
 		while ((line != null)) {
 			  nLines++;
+			  line = br.readLine();
 			}
 		nLines = nLines - 1; //pour avoir le nimbre de lignes qu'il faut parser pour récupérer les data
 
+		int[] dataArray = new int[nLines];
 		
 		//code pour récupérer les data de la 2eme colonne :
 		String[] columns = new String[2];
@@ -130,8 +132,10 @@ public class CSVParser extends CSVReader {
 		columns = line.split(",");
 		}	
 		for (int i = 0; i <= columns.length; i++) {
-			System.out.println(columns[i]);
+			dataArray[i] = Integer.parseInt(columns[i]);
+			points.add(dataArray[i]);
 		}
+		
 		
 		
 		
