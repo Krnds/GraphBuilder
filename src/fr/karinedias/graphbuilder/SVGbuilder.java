@@ -1,18 +1,23 @@
 package fr.karinedias.graphbuilder;
 
 import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.PrintWriter;
+import java.util.ArrayList;
+
 import fr.karinedias.graphbuilder.utils.*;
 
 public class SVGbuilder {
+	
+	private String header = "<svg xmlns=\"http://www.w3.org/2000/svg\" version=\"1.1\" width=\"800\" height=\"400\">";
 
 	public static void SVGaxis() throws FileNotFoundException {
 
 		String outputFile = "out.svg";
-		int height = 400;
-		int width = 800;
 		PrintWriter pw = new PrintWriter(outputFile);
-		pw.println("<svg xmlns=\"http://www.w3.org/2000/svg\" version=\"1.1\" width=\"800\" height=\"400\">");
+		
+		pw.println(
+				"<svg xmlns=\"http://www.w3.org/2000/svg\" version=\"1.1\" width=\"800\" height=\"400\">");
 		// 1ere barre :
 		pw.println(
 				"<rect x=\"35\" y=\"250\" width=\"30\" height=\"100\" style=\"fill:rgb(200,50,100);stroke-width:1;stroke:rgb(0,0,0)\" />");
@@ -39,10 +44,27 @@ public class SVGbuilder {
 		pw.close();
 
 	}
+	
+	public static void SVG() throws FileNotFoundException {
+		
+		String outputFile = "testSVG.svg";
+		PrintWriter pw = new PrintWriter(outputFile);
+		
+		
+		
+	}
 
 	public static void main(String[] args) throws FileNotFoundException {
+		
+		ArrayList<Integer> points = new ArrayList<Integer>();
+		
+		FileReader file = CSVReader.openCSV("test.csv");
+		points.add(5);
+		
+	
 		SVGaxis();
-		fr.karinedias.graphbuilder.utils.CSVReader.
+		
+
 	}
 }
 

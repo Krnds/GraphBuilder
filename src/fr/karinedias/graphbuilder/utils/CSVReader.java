@@ -47,7 +47,7 @@ public class CSVReader {
 	 * 
 	 */
 
-	public void openCSV(String fileName) {
+	public static FileReader openCSV(String fileName) {
 
 		String CSVFile = askFileName(); // correct de le mettre ici
 		String line = null;
@@ -60,11 +60,17 @@ public class CSVReader {
 				// appeler une méthode pour lire le contenu...
 			}
 			bufferedReader.close();
+			return fileReader;
+			
 		} catch (FileNotFoundException exc) {
-			System.out.println("File " + fileName +  " not found."); // TODO: mettre autre chose ?
+			System.out.println("File " + fileName +  " not found.");
+			return null;
 		} catch (IOException exc) {
-			System.out.println("Error while reading file."); // TODO: correct ?
+			System.out.println("Error while reading file.");
+			return null;
 		}
+		
+		
 	}
 
 	// method for checking if name of the CSV file is correct aka .csv :

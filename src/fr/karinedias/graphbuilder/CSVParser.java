@@ -7,19 +7,23 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Scanner;
 
 import fr.karinedias.graphbuilder.utils.*;
 
 public class CSVParser extends CSVReader {
+	
+	private String fileName;
+	
 
-	public CSVParser() {
+	public CSVParser(String file) {
 		// TODO Auto-generated constructor stub
 		super();
+		this.fileName = file;
 	}
-
-	public static void main(String[] args) throws IOException {
+	
+	public String FileName() {
+		
 		Scanner sc = new Scanner(System.in);
 		System.out.println("Nom du fichier ?");
 		CSVReader.fileName = sc.nextLine();
@@ -28,40 +32,74 @@ public class CSVParser extends CSVReader {
 		} else {
 			System.out.println("Nom du fichier incorrect !");
 		}
-		try {
+		
+		return CSVReader.fileName;
+	}
+	
+	public String getFileName() {
+		
+		return this.fileName;
+	}
 
-			ArrayList<String[]> test = new ArrayList<String[]>();
-			test.add(new String[10]);
-			// for (int i = 0; (parseKeys(CSVReader.fileName)).length; i++) {
-			// test.add(parseKeys(CSVReader.fileName));
-			// }
-			for (int i = 0; i < test.size(); i++) {
-				test.get(i);
-			}
-
-			int arrayLength = parseKeys(CSVReader.fileName).length;
-
-			System.out.println("Les données sont :");
-			for (int i = 0; i < arrayLength; i++) {
-				System.out.println(parseKeys(CSVReader.fileName)[i]);
-
-			}
-
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-
+	public static void main(String[] args) throws IOException {
+//		Scanner sc = new Scanner(System.in);
+//		System.out.println("Nom du fichier ?");
+//		
+//		
+//		String f = sc.nextLine();
+//		
+//		CSVReader.openCSV(f);
+//		if (correctName(CSVReader.fileName)) {
+//			System.out.println("Nom du fichier correct = " + CSVReader.fileName);
+//		} else {
+//			System.out.println("Nom du fichier incorrect !");
+//		}
+//		try {
+//
+//			ArrayList<String[]> test = new ArrayList<String[]>();
+//			test.add(new String[10]);
+//
+//			
+//			for (int i = 0; i < test.size(); i++) {
+//				test.get(i);
+//			}
+//
+//			int arrayLength = parseKeys(CSVReader.fileName).length;
+//
+//			System.out.println("Les données sont :");
+//			for (int i = 0; i < arrayLength; i++) {
+//				System.out.println(parseKeys(CSVReader.fileName)[i]);
+//
+//			}
+//
+//		} catch (IOException e) {
+//			e.printStackTrace();
+//		}
+		
+		
+		/*
+		 * TESTS !
+		 */
+		CSVParser myfile = new CSVParser("test.csv");
+		System.out.println(myfile.getFileName());
+		System.out.println("Les datas intéressantes : ");
+		System.out.println(myfile.getPoints());
+		
+//		for (int i = 0; i < 2; i++) {
+//		System.out.println(myfile.parseKeys()[i]);
+//		}
+		
+		
+		
 	}
 
 	// méthode qui récupère tous les champs du fichier CSV
-	public static String[] parseKeys(String filename) throws IOException {
+	public String[] parseKeys() throws IOException {
 
-		String[] keys = new String[10];
+		String[] keys = new String[10]; //pourquoi 10 ?
 		String firstLine = null;
 
-		// chemin de base du fichier à chercher :
-		String defaultPath = System.getProperty("user.dir") + File.separator + "csv" + File.separator;
-		BufferedReader br = new BufferedReader(new FileReader(defaultPath + filename));
+		BufferedReader br = getBufferedReader();
 		firstLine = br.readLine();
 
 		keys = firstLine.replaceAll("\"[^\\\"]*", "").split(",");
@@ -69,6 +107,59 @@ public class CSVParser extends CSVReader {
 		br.close();
 		return keys;
 
+	}
+	
+	
+	public ArrayList<Integer> getPoints () throws IOException {
+		
+		ArrayList<Integer> points = new ArrayList<Integer>();
+		BufferedReader br = getBufferedReader();
+		String line = br.readLine();
+		String[] dataArray;
+		
+		int nLines = 0;
+		while ((line != null)) {
+			  nLines++;
+			}
+		nLines = nLines - 1; //pour avoir le nimbre de lignes qu'il faut parser pour récupérer les data
+
+		
+		//code pour récupérer les data de la 2eme colonne :
+		String[] columns = new String[2];
+		columns = line.split(",");
+				
+		for (int i = 0; i <= columns.length; i++) {
+			System.out.println(columns[i].toString());
+		}
+		
+		
+		
+		//TODO: comptage de lignes pour l'axe x OK
+		//TODO: compter les "points" cad les valeurs des données : extraire les valeurs de la 2eme colonne
+		//TODO: ajouter les valeurs de la 1ere colonne en tant que valeurs sur l'axe x correspondant à chaque barre
+		
+		return points;
+	}
+	
+	
+	public ArrayList<Integer> getData() throws IOException {
+		return getPoints();
+	}
+	
+	public static void parseData() {
+		
+		
+	}
+	
+	
+	
+	public BufferedReader getBufferedReader() throws FileNotFoundException {
+		
+		String defaultPath = System.getProperty("user.dir") + File.separator + "csv" + File.separator;
+		BufferedReader br = new BufferedReader(new FileReader(defaultPath + fileName));
+		 
+		return br;
+		
 	}
 }
 
