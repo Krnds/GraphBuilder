@@ -126,10 +126,11 @@ public class CSVParser extends CSVReader {
 		
 		//code pour récupérer les data de la 2eme colonne :
 		String[] columns = new String[2];
+		for (int i = 0; i <= 2; i++) {
 		columns = line.split(",");
-				
+		}	
 		for (int i = 0; i <= columns.length; i++) {
-			System.out.println(columns[i].toString());
+			System.out.println(columns[i]);
 		}
 		
 		
