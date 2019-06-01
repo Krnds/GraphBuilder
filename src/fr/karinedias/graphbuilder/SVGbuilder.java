@@ -1,7 +1,9 @@
 package fr.karinedias.graphbuilder;
 
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 
@@ -54,13 +56,25 @@ public class SVGbuilder {
 		
 	}
 
-	public static void main(String[] args) throws FileNotFoundException {
+	public static void main(String[] args) throws IOException {
 		
 		ArrayList<Integer> points = new ArrayList<Integer>();
 		
 		FileReader file = CSVReader.openCSV("test.csv");
-		points.add(5);
+
+		CSVParser myfile = new CSVParser("src/test.csv");
 		
+		//a1 = tableau pour les légendes
+		ArrayList<String> a1 = new ArrayList<String>();
+		a1 = myfile.getKeys();
+		
+		//a2 = tableau pour l'axe des abscisses
+		ArrayList<String> a2 = new ArrayList<String>();
+		a2 = myfile.getAxisX();
+		
+		//a3 = tableau pour les points du graphe
+		ArrayList<String> a3 = new ArrayList<String>();
+		a3 = myfile.getPoints();
 	
 		SVGaxis();
 		

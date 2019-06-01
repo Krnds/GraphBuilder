@@ -15,17 +15,14 @@ import java.util.Scanner;
 import fr.karinedias.graphbuilder.utils.*;
 
 public class CSVParser extends CSVReader {
-	
 
 	private String fileName;
-	
 
 	public CSVParser(String file) {
 		super();
 		this.fileName = file;
 	}
-	
-	
+
 	public static void main(String[] args) throws IOException {
 
 		/*
@@ -33,14 +30,15 @@ public class CSVParser extends CSVReader {
 		 */
 		CSVParser myfile = new CSVParser("test.csv");
 		System.out.println(myfile.getPoints());
+		System.out.println(myfile.getAxisX());
+		System.out.println(myfile.getKeys());
+		
 
-		
 	}
-	
-	
-	//à quoi sert cette méthode ?
+
+	// à quoi sert cette méthode ?
 	public String FileName() {
-		
+
 		Scanner sc = new Scanner(System.in);
 		System.out.println("Nom du fichier ?");
 		String f = sc.nextLine();
@@ -49,78 +47,90 @@ public class CSVParser extends CSVReader {
 		} else {
 			System.out.println("Nom du fichier incorrect !");
 		}
-		
+
 		return f;
 	}
-	
+
 	public String getFileName() {
-		
+
 		return this.fileName;
 	}
 
-
 	// méthode qui récupère tous les champs du fichier CSV
-	public String[] parseKeys() throws IOException {
+	public ArrayList<String> getKeys() throws IOException {
 
-		String[] keys = new String[10]; //pourquoi 10 ?
+		String[] keysArray = new String[10]; // pourquoi 10 ?
+		ArrayList<String> keys = new ArrayList<String>();
 		String firstLine = null;
 
 		BufferedReader br = getBufferedReader();
 		firstLine = br.readLine();
 
-		keys = firstLine.replaceAll("\"[^\\\"]*", "").split(",");
+		keysArray = firstLine.replaceAll("\"[^\\\"]*", "").split(",");
+		//transfer all the data from keysArray to the ArrayList keys :
+		for (int i = 0; i < keysArray.length; i++) {
+			keys.add(keysArray[i]);
+		}
 
 		br.close();
 		return keys;
 
 	}
 	
-	
-	public ArrayList<String> getPoints () throws IOException {
+	//method for gathering all the 1st column (x axis) data :
+	public ArrayList<String> getAxisX() throws IOException {
 		
-		ArrayList<String> points = new ArrayList<String>();
-		BufferedReader br = getBufferedReader();
-		String line = br.readLine();
-		
+		ArrayList<String> axisX = new ArrayList<String>();
 		String defaultPath = System.getProperty("user.dir") + File.separator + "csv" + File.separator;
-		String csv = defaultPath + (FileName()); //ou utiliser this.fileName ou encore getFileName ?
+		String csv = defaultPath + this.fileName; // ou utiliser this.fileName ou encore getFileName ?
 		File csvfile = new File(csv);
-		
-		List<String> lines1 = Files.readAllLines(csvfile.toPath(), StandardCharsets.UTF_8); 
-		for (String values : lines1) { 
-		   String[] array = values.split(","); 
-		   points.add(array[1]);
-		   System.out.println(array[1]); 
-		
-		
-		
-		//TODO: comptage de lignes pour l'axe x OK
-		//TODO: compter les "points" cad les valeurs des données : extraire les valeurs de la 2eme colonne
-		//TODO: ajouter les valeurs de la 1ere colonne en tant que valeurs sur l'axe x correspondant à chaque barre
-		
+
+		List<String> lines1 = Files.readAllLines(csvfile.toPath(), StandardCharsets.UTF_8);
+
+		for (String values : lines1) {
+			String[] array = values.split(",");
+			axisX.add(array[0]);
+
 		}
+
+		axisX.remove(0);
+		return axisX;
+		
+	}
+
+	public ArrayList<String> getPoints() throws IOException {
+
+		ArrayList<String> points = new ArrayList<String>();
+
+		String defaultPath = System.getProperty("user.dir") + File.separator + "csv" + File.separator;
+		String csv = defaultPath + (FileName()); // ou utiliser this.fileName ou encore getFileName ?
+		File csvfile = new File(csv);
+
+		List<String> lines1 = Files.readAllLines(csvfile.toPath(), StandardCharsets.UTF_8);
+
+		for (String values : lines1) {
+			String[] array = values.split(",");
+			points.add(array[1]);
+
+		}
+
+		points.remove(0);
 		return points;
 	}
-	
-	
+
+	//utile ?
 	public ArrayList<String> getData() throws IOException {
 		return getPoints();
 	}
-	
-	public static void parseData() {
-		
-		
-	}
-	
-	
-	
+
+//TODO: refactoriser le code dans la méthode getPoints pour utiliser cette méthode-ci au lieu de refaire la lecture du BufferedReader;
 	public BufferedReader getBufferedReader() throws FileNotFoundException {
-		
+
 		String defaultPath = System.getProperty("user.dir") + File.separator + "csv" + File.separator;
 		BufferedReader br = new BufferedReader(new FileReader(defaultPath + fileName));
-		 
+
 		return br;
-		
+
 	}
 }
 
@@ -132,3 +142,9 @@ public class CSVParser extends CSVReader {
  * ParseInt();
  * 
  */
+
+// TODO: comptage de lignes pour l'axe x OK
+// TODO: compter les "points" cad les valeurs des données : extraire les valeurs
+// de la 2eme colonne OK, nb de points = points.length();
+// TODO: ajouter les valeurs de la 1ere colonne en tant que valeurs sur l'axe x
+// correspondant à chaque barre
