@@ -6,7 +6,10 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
+
+import com.sun.xml.internal.fastinfoset.stax.events.StAXEventReader;
 
 import fr.karinedias.graphbuilder.utils.CSVReader;
 
@@ -51,14 +54,17 @@ public class App {
 			
 			nLines++;
 			line += br.readLine();
-			System.out.println(line); //pourquoi affiche une ligne vide ? la boucle devrait s'arrêter avant ?
-			String[] s1 = line.split(",");
+			//System.out.println(line); //pourquoi affiche une ligne vide ? la boucle devrait s'arrêter avant ?
+			String[] s1 = line.split("(\r\n|\r|\n)", -1);
 			
-			for (int i = 0; i < nLines; i++) {
+			for (int i = 0; i < 1; i++) {
 				System.out.println(s1[i]);
 			}
 			
 		}
+		
+		//TEST FROM THE INTERNET :
+
 		
 
 		
