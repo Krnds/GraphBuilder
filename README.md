@@ -1,5 +1,5 @@
 # GraphBuilder
 
-## From CSV to an SVG graph
+## From CSV raw data to an SVG graph
 
 under construction...
