@@ -18,17 +18,19 @@ public class CSVParser extends CSVReader {
 
 	private String fileName;
 
-	public CSVParser(String file) {
+	public CSVParser() {
 		super();
-		this.fileName = file;
+		this.fileName = getFileName(); //plus correct que d'utiliser la méthode fileName dans le constructeur
 	}
+	
+
 
 	public static void main(String[] args) throws IOException {
 
 		/*
 		 * TESTS !
 		 */
-		CSVParser myfile = new CSVParser("test.csv");
+		CSVParser myfile = new CSVParser();
 		System.out.println(myfile.getPoints());
 		System.out.println(myfile.getAxisX());
 		System.out.println(myfile.getKeys());
@@ -37,7 +39,7 @@ public class CSVParser extends CSVReader {
 	}
 
 	// à quoi sert cette méthode ?
-	public String FileName() {
+	public String fileName() {
 
 		Scanner sc = new Scanner(System.in);
 		System.out.println("Nom du fichier ?");
@@ -47,13 +49,15 @@ public class CSVParser extends CSVReader {
 		} else {
 			System.out.println("Nom du fichier incorrect !");
 		}
+		
+		sc.close();
 
 		return f;
 	}
 
 	public String getFileName() {
 
-		return this.fileName;
+		return fileName();
 	}
 
 	// méthode qui récupère tous les champs du fichier CSV
@@ -103,7 +107,8 @@ public class CSVParser extends CSVReader {
 		ArrayList<String> points = new ArrayList<String>();
 
 		String defaultPath = System.getProperty("user.dir") + File.separator + "csv" + File.separator;
-		String csv = defaultPath + (FileName()); // ou utiliser this.fileName ou encore getFileName ?
+		String csv = defaultPath + this.fileName;
+
 		File csvfile = new File(csv);
 
 		List<String> lines1 = Files.readAllLines(csvfile.toPath(), StandardCharsets.UTF_8);
@@ -135,11 +140,11 @@ public class CSVParser extends CSVReader {
 }
 
 /*
- * TODO: méthode pour avoir en argument un nom de fichier et renvoyer TODO:
- * convertir l'array String[] renvoyé par parseKeys en ArrayList dans une autre
+ * TODO: méthode pour avoir en argument un nom de fichier et renvoyer 
+ * TODO: convertir l'array String[] renvoyé par parseKeys en ArrayList dans une autre
  * méthode ? ou dans le package utils ? avec des méthodes sur les
- * array/arrayList ? TODO: convertir tous les chiffres du fichier CSV avec
- * ParseInt();
+ * array/arrayList ? 
+ * TODO: convertir tous les chiffres du fichier CSV avec ParseInt();
  * 
  */
 

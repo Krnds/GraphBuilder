@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="800" height="400"><bar x="30" y="350" width="30" height="12" style="fill:rgb(200,50,100);stroke-width:1;stroke:rgb(0,0,0)" />
+<bar x="65" y="350" width="30" height="17" style="fill:rgb(200,50,100);stroke-width:1;stroke:rgb(0,0,0)" />
+<bar x="100" y="350" width="30" height="16" style="fill:rgb(200,50,100);stroke-width:1;stroke:rgb(0,0,0)" />
+<bar x="135" y="350" width="30" height="10" style="fill:rgb(200,50,100);stroke-width:1;stroke:rgb(0,0,0)" />
+<bar x="170" y="350" width="30" height="12" style="fill:rgb(200,50,100);stroke-width:1;stroke:rgb(0,0,0)" />
+<line x1="30" y1="20" x2="30" y2="350" fill="none" shape-rendering="crispEdges" stroke="#ccc" stroke-dasharray="5,2" stroke-width="1" marker-end="url(#arrow)"/>
+<line x1="750" y1="350" x2="30" y2="350" fill="none" shape-rendering="crispEdges" stroke="#ccc" stroke-dasharray="5,2" stroke-width="1"> </line>
+<text id="légende1 " x="40" y="360" font-size="6" text-anchor="right">2007</text>
+</svg>

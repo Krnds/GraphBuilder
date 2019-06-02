@@ -5,6 +5,6 @@
 <text id="légende1 " x="75" y="360" font-size="6" text-anchor="right">2008</text>
 <rect x="105" y="250" width="30" height="135" style="fill:rgb(20,80,100);stroke-width:1;stroke:rgb(0,0,0)" transform="translate(0,-35)"/>
 <line x1="30" y1="20" x2="30" y2="350" fill="none" shape-rendering="crispEdges" stroke="#ccc" stroke-dasharray="5,2" stroke-width="1" marker-end="url(#arrow)"/>
-<line x1="750" y1="350" x2="30" y2="350" fill="none" shape-rendering="crispEdges" stroke="#ccc" stroke-dasharray="5,2" stroke-width="1"> </line>
+<line x1="750" y1="350" x2="30" y2="350" fill="none" shape-rendering="crispEdges" stroke="#0000ee" stroke-dasharray="5,2" stroke-width="1"> </line>
 
 </svg>
