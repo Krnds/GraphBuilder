@@ -1,8 +1,22 @@
-<svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="800" height="400"><bar x="30" y="350" width="30" height="12" style="fill:rgb(200,50,100);stroke-width:1;stroke:rgb(0,0,0)" />
-<bar x="65" y="350" width="30" height="17" style="fill:rgb(200,50,100);stroke-width:1;stroke:rgb(0,0,0)" />
-<bar x="100" y="350" width="30" height="16" style="fill:rgb(200,50,100);stroke-width:1;stroke:rgb(0,0,0)" />
-<bar x="135" y="350" width="30" height="10" style="fill:rgb(200,50,100);stroke-width:1;stroke:rgb(0,0,0)" />
-<bar x="170" y="350" width="30" height="12" style="fill:rgb(200,50,100);stroke-width:1;stroke:rgb(0,0,0)" />
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="800" height="400"><rect x="50" y="350" width="50" height="12.0" style="fill:rgb(200,50,100);stroke-width:1;stroke:rgb(0,0,0)" transform="translate(0,-12.0)" />
+<rect x="105" y="350" width="50" height="17.0" style="fill:rgb(200,50,100);stroke-width:1;stroke:rgb(0,0,0)" transform="translate(0,-17.0)" />
+<rect x="160" y="350" width="50" height="16.0" style="fill:rgb(200,50,100);stroke-width:1;stroke:rgb(0,0,0)" transform="translate(0,-16.0)" />
+<rect x="215" y="350" width="50" height="10.0" style="fill:rgb(200,50,100);stroke-width:1;stroke:rgb(0,0,0)" transform="translate(0,-10.0)" />
+<rect x="270" y="350" width="50" height="12.0" style="fill:rgb(200,50,100);stroke-width:1;stroke:rgb(0,0,0)" transform="translate(0,-12.0)" />
+<rect x="325" y="350" width="50" height="15.0" style="fill:rgb(200,50,100);stroke-width:1;stroke:rgb(0,0,0)" transform="translate(0,-15.0)" />
+<rect x="380" y="350" width="50" height="56.0" style="fill:rgb(200,50,100);stroke-width:1;stroke:rgb(0,0,0)" transform="translate(0,-56.0)" />
+<rect x="435" y="350" width="50" height="120.0" style="fill:rgb(200,50,100);stroke-width:1;stroke:rgb(0,0,0)" transform="translate(0,-120.0)" />
+<rect x="490" y="350" width="50" height="160.0" style="fill:rgb(200,50,100);stroke-width:1;stroke:rgb(0,0,0)" transform="translate(0,-160.0)" />
+<rect x="545" y="350" width="50" height="1.0" style="fill:rgb(200,50,100);stroke-width:1;stroke:rgb(0,0,0)" transform="translate(0,-1.0)" />
+<rect x="600" y="350" width="50" height="12.0" style="fill:rgb(200,50,100);stroke-width:1;stroke:rgb(0,0,0)" transform="translate(0,-12.0)" />
+<rect x="655" y="350" width="50" height="17.0" style="fill:rgb(200,50,100);stroke-width:1;stroke:rgb(0,0,0)" transform="translate(0,-17.0)" />
+<rect x="710" y="350" width="50" height="16.0" style="fill:rgb(200,50,100);stroke-width:1;stroke:rgb(0,0,0)" transform="translate(0,-16.0)" />
+<rect x="765" y="350" width="50" height="10.0" style="fill:rgb(200,50,100);stroke-width:1;stroke:rgb(0,0,0)" transform="translate(0,-10.0)" />
+<rect x="820" y="350" width="50" height="12.0" style="fill:rgb(200,50,100);stroke-width:1;stroke:rgb(0,0,0)" transform="translate(0,-12.0)" />
+<rect x="875" y="350" width="50" height="15.0" style="fill:rgb(200,50,100);stroke-width:1;stroke:rgb(0,0,0)" transform="translate(0,-15.0)" />
+<rect x="930" y="350" width="50" height="56.0" style="fill:rgb(200,50,100);stroke-width:1;stroke:rgb(0,0,0)" transform="translate(0,-56.0)" />
+<rect x="985" y="350" width="50" height="120.0" style="fill:rgb(200,50,100);stroke-width:1;stroke:rgb(0,0,0)" transform="translate(0,-120.0)" />
+<rect x="1040" y="350" width="50" height="160.0" style="fill:rgb(200,50,100);stroke-width:1;stroke:rgb(0,0,0)" transform="translate(0,-160.0)" />
 <line x1="30" y1="20" x2="30" y2="350" fill="none" shape-rendering="crispEdges" stroke="#ccc" stroke-dasharray="5,2" stroke-width="1" marker-end="url(#arrow)"/>
 <line x1="750" y1="350" x2="30" y2="350" fill="none" shape-rendering="crispEdges" stroke="#ccc" stroke-dasharray="5,2" stroke-width="1"> </line>
 <text id="légende1 " x="40" y="360" font-size="6" text-anchor="right">2007</text>

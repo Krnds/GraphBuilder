@@ -8,6 +8,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+import java.lang.*;
 
 import com.sun.xml.internal.fastinfoset.stax.events.StAXEventReader;
 
@@ -40,46 +41,46 @@ public class App {
 
 	public static void main(String[] args) throws IOException {
 
-		String defaultPath = System.getProperty("user.dir") + File.separator + "csv" + File.separator;
-		BufferedReader br1 = new BufferedReader(new FileReader(defaultPath + "test.csv"));
-
-		ArrayList<Integer> points = new ArrayList<Integer>();
-		BufferedReader br = br1;
-		String line = br.readLine();
-		
-
-
-		int nLines = 0;
-		while ((line = br.readLine()) != null) {
-			
-			nLines++;
-			line += br.readLine();
-			//System.out.println(line); //pourquoi affiche une ligne vide ? la boucle devrait s'arrêter avant ?
-			String[] s1 = line.split("(\r\n|\r|\n)", -1);
-			
-			for (int i = 0; i < 1; i++) {
-				System.out.println(s1[i]);
-			}
-			
-		}
-		
-		//TEST FROM THE INTERNET :
-
-		
-
-		
-
-		System.out.println(nLines);
-		int[] dataArray = new int[nLines];
-
-		// code pour récupérer les data de la 2eme colonne :
-		String[] columns = new String[2];
+//		String defaultPath = System.getProperty("user.dir") + File.separator + "csv" + File.separator;
+//		BufferedReader br1 = new BufferedReader(new FileReader(defaultPath + "test.csv"));
+//
+//		ArrayList<Integer> points = new ArrayList<Integer>();
+//		BufferedReader br = br1;
+//		String line = br.readLine();
+//		
+//
+//
+//		int nLines = 0;
+//		while ((line = br.readLine()) != null) {
+//			
+//			nLines++;
+//			line += br.readLine();
+//			//System.out.println(line); //pourquoi affiche une ligne vide ? la boucle devrait s'arrêter avant ?
+//			String[] s1 = line.split("(\r\n|\r|\n)", -1);
+//			
+//			for (int i = 0; i < 1; i++) {
+//				System.out.println(s1[i]);
+//			}
+//			
+//		}
+//		
+//		//TEST FROM THE INTERNET :
+//
+//		
+//
+//		
+//
+//		System.out.println(nLines);
+//		int[] dataArray = new int[nLines];
+//
+//		// code pour récupérer les data de la 2eme colonne :
+//		String[] columns = new String[2];
 		
 //if (line != null) {
 //			String[] s1 = line.split(",");
 //
 //}
-		br.close();
+
 //		for (int i = 0; i <= columns.length; i++) {
 //			dataArray[i] = Integer.parseInt(columns[i]);
 //			points.add(dataArray[i]);
@@ -87,10 +88,19 @@ public class App {
 //		br.close();
 //
 //		for (int j = 0; j < points.size(); j++) {
-//			System.out.println(points.get(j));
+//			System.out.println(poin		br.close();ts.get(j));
 //		}
 		
 		
+		
+		//test
+		
+		String str = "12";
+		double unite = 12.7;
+		
+		String fin = "Coucou " +  Integer.parseInt(str) *unite;
+		
+		System.out.println(fin);
 	}
 	
 	

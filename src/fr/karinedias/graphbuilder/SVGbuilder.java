@@ -9,6 +9,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.lang.Integer;
+import java.lang.*;
+import java.lang.String;
 
 import fr.karinedias.graphbuilder.utils.*;
 import jdk.internal.org.objectweb.asm.tree.analysis.Value;
@@ -67,14 +69,18 @@ public class SVGbuilder {
 		 * PRINTING POINTS OF CSV TO THE GRAPH :
 		 */
 
-		// loop for x position of barangles :
+		// loop for x position of bars :
 		ArrayList<Integer> xPositionbar = new ArrayList<Integer>(a3.size());
-		int width = 30; // à demander à l'utilisateur
+		int width = 50; // à demander à l'utilisateur
 		xPositionbar.addAll(counter(a3.size(), width));
+		
+		//dynamiser la hauteur des barres :
+		double unite = 300/ setMax(file.getPoints()); //350 = hauteur max du graph avec les marges
+		
 
 		for (int i = 0; i < a3.size() - 1; i++) {
-			pw.println("<bar x=\"" + xPositionbar.get(i) + "\" y=\"350\" width=\"" + width + "\" height=\"" + a3.get(i)
-					+ "\" style=\"fill:rgb(200,50,100);stroke-width:1;stroke:rgb(0,0,0)\" />");
+			pw.println("<rect x=\"" + xPositionbar.get(i) + "\" y=\"350\" width=\"" + width + "\" height=\"" + Double.valueOf(Double.parseDouble(a3.get(i))*unite)
+					+ "\" style=\"fill:rgb(200,50,100);stroke-width:1;stroke:rgb(0,0,0)\" transform=\"translate(0,-" + Double.valueOf(Double.parseDouble(a3.get(i))*unite) + ")\" />");
 		}
 
 		/*
@@ -156,7 +162,7 @@ public class SVGbuilder {
 		pw.println("<svg xmlns=\"http://www.w3.org/2000/svg\" version=\"1.1\" width=\"800\" height=\"400\">");
 		// 1ere barre :
 		pw.println(
-				"<bar x=\"35\" y=\"250\" width=\"30\" height=\"100\" style=\"fill:rgb(200,50,100);stroke-width:1;stroke:rgb(0,0,0)\" />");
+				"<rect x=\"35\" y=\"250\" width=\"30\" height=\"100\" style=\"fill:rgb(200,50,100);stroke-width:1;stroke:rgb(0,0,0)\" />");
 
 		// légende 1 :
 		pw.println("<text id=\"légende1 \" x=\"40\" y=\"360\" font-size=\"6\" text-anchor=\"right\">2007</text>"); // x
@@ -168,7 +174,7 @@ public class SVGbuilder {
 
 		// 2eme barre en x = 35 + 30 (width) + 5 d'espace = 70
 		pw.println(
-				"<bar x=\"70\" y=\"250\" width=\"30\" height=\"75\" style=\"fill:rgb(200,50,100);stroke-width:1;stroke:rgb(0,0,0)\" transform=\"translate(0,25)\"/>");
+				"<rect x=\"70\" y=\"250\" width=\"30\" height=\"75\" style=\"fill:rgb(200,50,100);stroke-width:1;stroke:rgb(0,0,0)\" transform=\"translate(0,25)\"/>");
 		// car 100-75 = 25 pour avoir la même base que la 1st barre
 		// légende 2 :
 		pw.println("<text id=\"légende1 \" x=\"75\" y=\"360\" font-size=\"6\" text-anchor=\"right\">2008</text>");// x =
@@ -179,7 +185,7 @@ public class SVGbuilder {
 
 		// exemple avec barre n°3 : x = 70 + 30 + 5 = 105
 		pw.println(
-				"<bar x=\"105\" y=\"250\" width=\"30\" height=\"135\" style=\"fill:rgb(20,80,100);stroke-width:1;stroke:rgb(0,0,0)\" transform=\"translate(0,-35)\"/>");
+				"<rect x=\"105\" y=\"250\" width=\"30\" height=\"135\" style=\"fill:rgb(20,80,100);stroke-width:1;stroke:rgb(0,0,0)\" transform=\"translate(0,-35)\"/>");
 
 		// axe Y : ordonnées
 		pw.println(
@@ -201,6 +207,4 @@ public class SVGbuilder {
  * ordonnées et entre chaque rectangle pour l'espace
  */
 
-
-
-
+//TODO: changer les balises chart par rect

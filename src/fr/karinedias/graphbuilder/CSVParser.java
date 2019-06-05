@@ -123,10 +123,6 @@ public class CSVParser extends CSVReader {
 		return points;
 	}
 
-	//utile ?
-	public ArrayList<String> getData() throws IOException {
-		return getPoints();
-	}
 
 //TODO: refactoriser le code dans la méthode getPoints pour utiliser cette méthode-ci au lieu de refaire la lecture du BufferedReader;
 	public BufferedReader getBufferedReader() throws FileNotFoundException {
