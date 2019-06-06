@@ -1,19 +1,13 @@
 package fr.karinedias.graphbuilder;
 
-import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.lang.Integer;
-import java.lang.*;
 import java.lang.String;
 
-import fr.karinedias.graphbuilder.utils.*;
-import jdk.internal.org.objectweb.asm.tree.analysis.Value;
 
 public class SVGbuilder {
 
@@ -36,6 +30,8 @@ public class SVGbuilder {
 		mysvg.dataSVG(myfile);
 		
 		System.out.println(setMax(myfile.getPoints()));
+		System.out.println(counter(21, 50));
+
 		
 
 	}
@@ -75,8 +71,12 @@ public class SVGbuilder {
 		xPositionbar.addAll(counter(a3.size(), width));
 		
 		//dynamiser la hauteur des barres :
-		double unite = 300/ setMax(file.getPoints()); //350 = hauteur max du graph avec les marges
-		
+		double unite = 0.0;
+		if (setMax(file.getPoints()) > (400 - width)) {
+			unite = setMax(file.getPoints()) / (400 - width);
+		} else {
+		 unite = (400 - width)/ setMax(file.getPoints()); //350 = hauteur max du graph avec les marges
+		}
 
 		for (int i = 0; i < a3.size() - 1; i++) {
 			pw.println("<rect x=\"" + xPositionbar.get(i) + "\" y=\"350\" width=\"" + width + "\" height=\"" + Double.valueOf(Double.parseDouble(a3.get(i))*unite)
@@ -99,7 +99,10 @@ public class SVGbuilder {
 		 * LEGENDS OF POINTS :
 		 */
 
-		pw.println("<text id=\"légende1 \" x=\"40\" y=\"360\" font-size=\"6\" text-anchor=\"right\">2007</text>");
+		int positionOfLabels = (int) (width / 2.5); //au pif le 5 vient de la margin (cf. counter)
+		for (int i = 0; i < a3.size() - 1; i++) {
+		pw.println("<text id=\"légende-abcisse \" x=\""+ (xPositionbar.get(i)+positionOfLabels) + "\" y=\"360\" font-size=\"6\" text-anchor=\"center\">"+ a2.get(i) +"</text>");
+		}
 		pw.println("</svg>");
 		pw.close();
 
@@ -139,7 +142,7 @@ public class SVGbuilder {
 		
 		ArrayList<Integer> dataInt = new ArrayList<Integer>(data.size());
 		for (int i = 0; i < data.size(); i++) {
-		dataInt.add(j.valueOf(data.get(i)));
+		dataInt.add(j.valueOf(data.get(i))); //inutile ?
 		}
 		//find maximum value
 		int max = Collections.max(dataInt); //forcément un int ? si données en float ?
@@ -207,4 +210,7 @@ public class SVGbuilder {
  * ordonnées et entre chaque rectangle pour l'espace
  */
 
-//TODO: changer les balises chart par rect
+//TODO: changer les balises chart par rect OK
+//TODO: réécrire la méthode dataSVG afin de rendre cela plus compréhensible
+//TODO: attention de gérer les bugs quand les calculs donnent 0 : si le max des données > hauteur (350px), changer le calcul de l'unité'
+//TODO: éviter toutes les répétitions de code, faire du refactoring
