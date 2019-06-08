@@ -96,11 +96,16 @@ public class App {
 		//test
 		
 		String str = "12";
-		double unite = 12.7;
+		ArrayList<String> test = new ArrayList<String>();
+		test.add("4");
+		test.add("9");
+		ArrayList<Integer> fin = new ArrayList<Integer>();
+		for (int i = 0; i< test.size(); i++) {
+		fin.add(Integer.valueOf(Integer.parseInt(test.get(i))));
+		}
 		
-		String fin = "Coucou " +  Integer.parseInt(str) *unite;
+		int a = Integer.parseInt(test.get(0));
 		
-		System.out.println(fin);
 	}
 	
 	

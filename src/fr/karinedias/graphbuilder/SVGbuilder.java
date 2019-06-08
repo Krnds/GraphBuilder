@@ -5,6 +5,9 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Collections;
+
+import com.sun.corba.se.spi.orb.ParserData;
+
 import java.lang.Integer;
 import java.lang.String;
 
@@ -14,10 +17,28 @@ public class SVGbuilder {
 	private static String header = "<svg xmlns=\"http://www.w3.org/2000/svg\" version=\"1.1\" width=\"800\" height=\"400\">";
 	private String output = "dataSVG.svg";
 
-	// TODO: changer en arg CSVParser
-	public SVGbuilder(CSVParser csv) {
-		// TODO Auto-generated constructor stub
+	// TODO: utile ici d'avoir un constructeur ?
+	public SVGbuilder(CSVParser csvFile) throws IOException {
+		
+		//TEST
+		ArrayList<String> a1 = new ArrayList<String>();
+		a1 = csvFile.getKeys();
+
+		// a2 = tableau pour l'axe des abscisses
+		ArrayList<String> a2 = new ArrayList<String>();
+		a2 = csvFile.getAxisX();
+
+		// a3 = tableau pour les points du graphe
+		ArrayList<String> a3 = new ArrayList<String>();
+		a3 = csvFile.getPoints();
+
+		PrintWriter pw = new PrintWriter(this.output);
+		pw.print(header);
+		
+		
+		
 	}
+	
 	
 	/*
 	 * MAIN METHOD
@@ -27,12 +48,16 @@ public class SVGbuilder {
 		// SVGaxis();
 		CSVParser myfile = new CSVParser();
 		SVGbuilder mysvg = new SVGbuilder(myfile);
-		mysvg.dataSVG(myfile);
 		
+		
+		
+		//tests de méthodess :
+		
+		System.out.println(myfile.getPoints().toString());
+		System.out.println(numberOfBars(myfile.getPoints()));
 		System.out.println(setMax(myfile.getPoints()));
 		System.out.println(counter(21, 50));
-
-		
+		mysvg.dataSVG(myfile);
 
 	}
 	
@@ -71,17 +96,24 @@ public class SVGbuilder {
 		xPositionbar.addAll(counter(a3.size(), width));
 		
 		//dynamiser la hauteur des barres :
-		double unite = 0.0;
+		double optimalHeight = 0.0;
 		if (setMax(file.getPoints()) > (400 - width)) {
-			unite = setMax(file.getPoints()) / (400 - width);
+			optimalHeight = setMax(file.getPoints()) / (400 - width);
 		} else {
-		 unite = (400 - width)/ setMax(file.getPoints()); //350 = hauteur max du graph avec les marges
+		 optimalHeight = (400 - width)/ setMax(file.getPoints()); //350 = hauteur max du graph avec les marges
 		}
+		
+		//dynamiser la largeur des barres :
+		int rightMargin = 50;
+		int optimalWidth = ((600 - (numberOfBars(file.getPoints())) * 5) - rightMargin) / (numberOfBars(file.getPoints())); //à l'arrache
 
 		for (int i = 0; i < a3.size() - 1; i++) {
-			pw.println("<rect x=\"" + xPositionbar.get(i) + "\" y=\"350\" width=\"" + width + "\" height=\"" + Double.valueOf(Double.parseDouble(a3.get(i))*unite)
-					+ "\" style=\"fill:rgb(200,50,100);stroke-width:1;stroke:rgb(0,0,0)\" transform=\"translate(0,-" + Double.valueOf(Double.parseDouble(a3.get(i))*unite) + ")\" />");
+			pw.println("<rect x=\"" + xPositionbar.get(i) + "\" y=\"350\" width=\"" + optimalWidth + "\" height=\"" + Double.valueOf(Double.parseDouble(a3.get(i))*optimalHeight)
+					+ "\" style=\"fill:rgb(200,50,100);stroke-width:1;stroke:rgb(0,0,0)\" transform=\"translate(0,-" + Double.valueOf(Double.parseDouble(a3.get(i))*optimalHeight) + ")\" />");
 		}
+		
+		
+		
 
 		/*
 		 * AXIS OF GRAPH :
@@ -99,21 +131,12 @@ public class SVGbuilder {
 		 * LEGENDS OF POINTS :
 		 */
 
-		int positionOfLabels = (int) (width / 2.5); //au pif le 5 vient de la margin (cf. counter)
+		int positionOfLabels = (int) (optimalWidth / numberOfBars(file.getPoints())); //au pif le 5 vient de la margin (cf. counter)
 		for (int i = 0; i < a3.size() - 1; i++) {
 		pw.println("<text id=\"légende-abcisse \" x=\""+ (xPositionbar.get(i)+positionOfLabels) + "\" y=\"360\" font-size=\"6\" text-anchor=\"center\">"+ a2.get(i) +"</text>");
 		}
 		pw.println("</svg>");
 		pw.close();
-
-	}
-
-	
-
-	public static void SVG() throws FileNotFoundException {
-
-		String outputFile = "testSVG.svg";
-		PrintWriter pw = new PrintWriter(outputFile);
 
 	}
 
@@ -137,17 +160,27 @@ public class SVGbuilder {
 	
 	public static int setMax(ArrayList<String> data) {
 		
-		//parseInt
-		Integer j = 0;
-		
-		ArrayList<Integer> dataInt = new ArrayList<Integer>(data.size());
+		//TODO: setMax doit UNIQUEMENT prendre les données de la 2eme colonne, sinon erreur !!!
+				
+		ArrayList<Integer> dataInt = new ArrayList<Integer>();//j'ai mis avant dans (); "data.size();
 		for (int i = 0; i < data.size(); i++) {
-		dataInt.add(j.valueOf(data.get(i))); //inutile ?
+		//dataInt.add(Integer.valueOf(data.get(i))); //fait quoi ?
+			dataInt.add(Integer.valueOf(Integer.parseInt(data.get(i))));
 		}
+		
+		
 		//find maximum value
 		int max = Collections.max(dataInt); //forcément un int ? si données en float ?
 		
 		return max;
+	}
+	
+	//method for counting how many bars the graph have
+	public static int numberOfBars(ArrayList<String> data) {
+		
+		int nBars = data.size();
+		
+		return nBars;
 	}
 	
 	
