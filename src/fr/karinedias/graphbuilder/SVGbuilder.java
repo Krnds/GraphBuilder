@@ -8,6 +8,8 @@ import java.util.Collections;
 
 import com.sun.corba.se.spi.orb.ParserData;
 
+import fr.karinedias.graphbuilder.utils.SVGUtils;
+
 import java.lang.Integer;
 import java.lang.String;
 
@@ -54,9 +56,11 @@ public class SVGbuilder {
 		//tests de méthodess :
 		
 		System.out.println(myfile.getPoints().toString());
-		System.out.println(numberOfBars(myfile.getPoints()));
-		System.out.println(setMax(myfile.getPoints()));
+		System.out.println("Nombre de barres :" + numberOfBars(myfile.getPoints()));
+		System.out.println("Valeur max : "+ setMax(myfile.getPoints()));
 		System.out.println(counter(21, 50));
+		System.out.println("Largeur optimale : " + SVGUtils.getOptimalWidth(myfile.getPoints()));
+		System.out.println("Hauteur optimale : " + SVGUtils.getOptimalHeight(myfile.getPoints()));
 		mysvg.dataSVG(myfile);
 
 	}
@@ -107,9 +111,14 @@ public class SVGbuilder {
 		int rightMargin = 50;
 		int optimalWidth = ((600 - (numberOfBars(file.getPoints())) * 5) - rightMargin) / (numberOfBars(file.getPoints())); //à l'arrache
 
+		
+		//récupérer la valeur de optimalWidth et optimalHeight de la classe SVGUtils
+		int optWidth = SVGUtils.getOptimalWidth(file.getPoints()); 
+		int optHeight = SVGUtils.getOptimalHeight(file.getPoints());		
+		
 		for (int i = 0; i < a3.size() - 1; i++) {
-			pw.println("<rect x=\"" + xPositionbar.get(i) + "\" y=\"350\" width=\"" + optimalWidth + "\" height=\"" + Double.valueOf(Double.parseDouble(a3.get(i))*optimalHeight)
-					+ "\" style=\"fill:rgb(200,50,100);stroke-width:1;stroke:rgb(0,0,0)\" transform=\"translate(0,-" + Double.valueOf(Double.parseDouble(a3.get(i))*optimalHeight) + ")\" />");
+			pw.println("<rect x=\"" + xPositionbar.get(i) + "\" y=\"350\" width=\"" + optWidth + "\" height=\"" + Double.valueOf(Double.parseDouble(a3.get(i))*optHeight)
+					+ "\" style=\"fill:rgb(200,50,100);stroke-width:1;stroke:rgb(0,0,0)\" transform=\"translate(0,-" + Double.valueOf(Double.parseDouble(a3.get(i))*optHeight) + ")\" />");
 		}
 		
 		
@@ -125,16 +134,27 @@ public class SVGbuilder {
 
 		// axe X : abscisses
 		pw.println(
-				"<line x1=\"750\" y1=\"350\" x2=\"30\" y2=\"350\" fill=\"none\" shape-rendering=\"crispEdges\" stroke=\"#ccc\" stroke-dasharray=\"5,2\" stroke-width=\"1\"> </line>");
+				"<line x1=\"850\" y1=\"350\" x2=\"30\" y2=\"350\" fill=\"none\" shape-rendering=\"crispEdges\" stroke=\"#ccc\" stroke-dasharray=\"5,2\" stroke-width=\"1\"> </line>");
 
 		/*
-		 * LEGENDS OF POINTS :
+		 * LABLES OF POINTS :
 		 */
 
 		int positionOfLabels = (int) (optimalWidth / numberOfBars(file.getPoints())); //au pif le 5 vient de la margin (cf. counter)
 		for (int i = 0; i < a3.size() - 1; i++) {
-		pw.println("<text id=\"légende-abcisse \" x=\""+ (xPositionbar.get(i)+positionOfLabels) + "\" y=\"360\" font-size=\"6\" text-anchor=\"center\">"+ a2.get(i) +"</text>");
+		pw.println("<text id=\"légende-abcisse \" x=\""+ (xPositionbar.get(i)+positionOfLabels) + "\" y=\"360\" font-size=\"8\" text-anchor=\"center\">"+ a2.get(i) +"</text>");
 		}
+		
+		/*
+		 * LEGENDS :
+		 */
+	ArrayList<String> legends = new ArrayList<String>();
+	legends = file.getKeys();
+	pw.println("<rect x=\"655\" y=\"12\" width=\"20\" height=\"10\" style=\"fill:rgb(200,50,100);stroke-width:1;stroke:rgb(0,0,0)\">  </rect>");
+	pw.println("<text id=\"légende du graphique\" x=\"680\" y=\"20\" font-size=\"12\">" + legends.get(1) + "</text>");
+	
+
+
 		pw.println("</svg>");
 		pw.close();
 

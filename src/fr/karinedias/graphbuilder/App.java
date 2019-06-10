@@ -15,6 +15,9 @@ import com.sun.xml.internal.fastinfoset.stax.events.StAXEventReader;
 import fr.karinedias.graphbuilder.utils.CSVReader;
 
 public class App {
+	/*
+	 * Classe de tests, à supprimer une fois le projet terminé
+	 */
 
 	public static void test() throws IOException {
 		String defaultPath = System.getProperty("user.dir") + File.separator + "csv" + File.separator;
