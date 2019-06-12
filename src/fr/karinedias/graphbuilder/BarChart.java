@@ -86,10 +86,10 @@ public class BarChart implements Chart {
 		pw.print(svgHeader);
 
 		/*
-		 * PRINTING POINTS OF CSV TO THE GRAPH :
+		 * Construction des barres du diagramme :
 		 */
 
-		// Position des barres sur l'axe des abscisses dans l'arrayList
+		// Position X des barres sur l'axe des abscisses dans l'arrayList xPositionbar
 		ArrayList<Integer> xPositionbar = new ArrayList<Integer>(graph.points().size());
 		int width = 50; // TODO: à demander à l'utilisateur, cf classe UserRequests
 		xPositionbar.addAll(SVGUtils.counter(graph.points().size(), width));
@@ -107,19 +107,21 @@ public class BarChart implements Chart {
 		}
 
 		/*
-		 * AXIS OF GRAPH :
+		 * Axes du graphique :
 		 */
+		
+		// axe X : abscisses
+		pw.println(
+				"<line x1=\"850\" y1=\"350\" x2=\"30\" y2=\"350\" fill=\"none\" shape-rendering=\"crispEdges\" stroke=\"#ccc\" stroke-dasharray=\"5,2\" stroke-width=\"1\"> </line>");
+
 
 		// axe Y : ordonnées
 		pw.println(
 				"<line x1=\"30\" y1=\"20\" x2=\"30\" y2=\"350\" fill=\"none\" shape-rendering=\"crispEdges\" stroke=\"#ccc\" stroke-dasharray=\"5,2\" stroke-width=\"1\" marker-start=\"url(#arrow)\" marker-end=\"url(#arrow)\"/>");
 
-		// axe X : abscisses
-		pw.println(
-				"<line x1=\"850\" y1=\"350\" x2=\"30\" y2=\"350\" fill=\"none\" shape-rendering=\"crispEdges\" stroke=\"#ccc\" stroke-dasharray=\"5,2\" stroke-width=\"1\"> </line>");
 
 		/*
-		 * LABLES OF POINTS :
+		 * Légendes sur l'axe des abscisses correspondant aux données de la 1ère colonne du CSV :
 		 */
 
 		int nBars = SVGUtils.getNumberOfBars(graph.points()); // nombre de barres du graphique
@@ -130,7 +132,7 @@ public class BarChart implements Chart {
 		}
 
 		/*
-		 * LEGENDS :
+		 * Mettre la légende sur le graph (rectangle plein + texte indiquant la couleur) :
 		 */
 		ArrayList<String> legends = new ArrayList<String>();
 		legends = graph.legend();

@@ -83,7 +83,9 @@ public class LineChart implements Chart {
 		int width = 50; // TODO: à demander à l'utilisateur, cf classe UserRequests
 		xPositionbar.addAll(SVGUtils.counter(svgFile.points().size(), width));
 
-pw.println("<polyline points=\"15,80 29,50 43,60 57,30 71,40 85,15\" fill=\"none\" stroke=\"grey\" marker-start=\"url(#dot) \" marker-mid=\"url(#dot)\"  marker-end=\"url(#dot)\" />");
+		ArrayList<String> points = new ArrayList<String>(); //ArrayList pour stocker toutes les valeurs des points du graphe
+		points.addAll(svgFile.points());
+		pw.println("<polyline points=\"15,80 29,50 43,60 57,30 71,40 85,15\" fill=\"blue\" stroke=\"grey\" marker-start=\"url(#dot) \" marker-mid=\"url(#dot)\"  marker-end=\"url(#dot)\" />");
 
 		/*
 		 * AXIS :
