@@ -6,7 +6,7 @@ import java.util.ArrayList;
 
 import fr.karinedias.graphbuilder.utils.SVGUtils;
 
-public class BarGraph implements Chart {
+public class BarChart implements Chart {
 
 	/*
 	 * CLASSE POUR LA CONSTRUCTION DES DIAGRAMMES EN BARRE
@@ -17,16 +17,17 @@ public class BarGraph implements Chart {
 	 */
 
 	private static String svgHeader = "<svg xmlns=\"http://www.w3.org/2000/svg\" version=\"1.1\" width=\"800\" height=\"400\">";
-	private String outputFile = "dataSVG.svg";
+	private String outputFile = "dataSVG.svg"; //TODO : demander à l'utilisateur son nom
 	private CSVParser csvFile = new CSVParser();
-
+	private BarChart svgFile = new BarChart(this.csvFile); // TODO: nécessaire ? Correct ?
+	
 	/*
 	 * constructeur :
 	 */
 
-	public BarGraph(CSVParser csvFile) {
+	public BarChart(CSVParser csvFile) {
 		this.csvFile = csvFile;
-		BarGraph svgFile = new BarGraph(this.csvFile); // TODO: correct ou pas ?
+		BarChart svgFile = new BarChart(this.csvFile); // TODO: correct ou pas ?
 	}
 
 	@Override
@@ -64,48 +65,46 @@ public class BarGraph implements Chart {
 
 		return labels;
 	}
+	
+	
+	//TODO: Faire des getters dans cette classe là pour accéder à toutes les ArrayList ?
+	//TODO: Faire une méthode main ici ou dans une autre classe qui va appeler toutes les méthodes ?
+	
 
-	public void construction(BarGraph graph) throws IOException {
+	
+	
+	/* TODO: besoin de getters ??
+	 * GETTERS POUR ACCÉDER AUX MÉTHODES EN CRÉANT L'OBJET BARGRAPH DANS UNE AUTRE CLASSE [en constrcution]
+	 */
+
+	public void construction(BarChart graph) throws IOException {
 		
+		//TODO: enlever l'argument graph
+
 		// déclaration du PrinterWriter pour la construction du SVG
 		PrintWriter pw = new PrintWriter(this.outputFile);
 		pw.print(svgHeader);
-		
 
-		
 		/*
 		 * PRINTING POINTS OF CSV TO THE GRAPH :
 		 */
 
-		// loop for x position of bars :
+		// Position des barres sur l'axe des abscisses dans l'arrayList
 		ArrayList<Integer> xPositionbar = new ArrayList<Integer>(graph.points().size());
 		int width = 50; // TODO: à demander à l'utilisateur, cf classe UserRequests
 		xPositionbar.addAll(SVGUtils.counter(graph.points().size(), width));
-		
-		//dynamiser la hauteur des barres :
-		double optimalHeight = 0.0;
-		if (setMax(file.getPoints()) > (400 - width)) {
-			optimalHeight = setMax(file.getPoints()) / (400 - width);
-		} else {
-		 optimalHeight = (400 - width)/ setMax(file.getPoints()); //350 = hauteur max du graph avec les marges
-		}
-		
-		//dynamiser la largeur des barres :
-		int rightMargin = 50;
-		int optimalWidth = ((600 - (numberOfBars(file.getPoints())) * 5) - rightMargin) / (numberOfBars(file.getPoints())); //à l'arrache
 
-		
-		//récupérer la valeur de optimalWidth et optimalHeight de la classe SVGUtils
-		int optWidth = SVGUtils.getOptimalWidth(file.getPoints()); 
-		int optHeight = SVGUtils.getOptimalHeight(file.getPoints());		
-		
-		for (int i = 0; i < a3.size() - 1; i++) {
-			pw.println("<rect x=\"" + xPositionbar.get(i) + "\" y=\"350\" width=\"" + optWidth + "\" height=\"" + Double.valueOf(Double.parseDouble(a3.get(i))*optHeight)
-					+ "\" style=\"fill:rgb(200,50,100);stroke-width:1;stroke:rgb(0,0,0)\" transform=\"translate(0,-" + Double.valueOf(Double.parseDouble(a3.get(i))*optHeight) + ")\" />");
+
+		// récupérer la valeur de optimalWidth et optimalHeight de la classe SVGUtils
+		int optWidth = SVGUtils.getOptimalWidth(graph.points());
+		int optHeight = SVGUtils.getOptimalHeight(graph.points());
+
+		for (int i = 0; i < points().size() - 1; i++) {
+			pw.println("<rect x=\"" + xPositionbar.get(i) + "\" y=\"350\" width=\"" + optWidth + "\" height=\""
+					+ Double.valueOf(Double.parseDouble(points().get(i)) * optHeight)
+					+ "\" style=\"fill:rgb(200,50,100);stroke-width:1;stroke:rgb(0,0,0)\" transform=\"translate(0,-"
+					+ Double.valueOf(Double.parseDouble(points().get(i)) * optHeight) + ")\" />");
 		}
-		
-		
-		
 
 		/*
 		 * AXIS OF GRAPH :
@@ -113,7 +112,7 @@ public class BarGraph implements Chart {
 
 		// axe Y : ordonnées
 		pw.println(
-				"<line x1=\"30\" y1=\"20\" x2=\"30\" y2=\"350\" fill=\"none\" shape-rendering=\"crispEdges\" stroke=\"#ccc\" stroke-dasharray=\"5,2\" stroke-width=\"1\" marker-end=\"url(#arrow)\"/>");
+				"<line x1=\"30\" y1=\"20\" x2=\"30\" y2=\"350\" fill=\"none\" shape-rendering=\"crispEdges\" stroke=\"#ccc\" stroke-dasharray=\"5,2\" stroke-width=\"1\" marker-start=\"url(#arrow)\" marker-end=\"url(#arrow)\"/>");
 
 		// axe X : abscisses
 		pw.println(
@@ -123,20 +122,22 @@ public class BarGraph implements Chart {
 		 * LABLES OF POINTS :
 		 */
 
-		int positionOfLabels = (int) (optimalWidth / numberOfBars(file.getPoints())); //au pif le 5 vient de la margin (cf. counter)
-		for (int i = 0; i < a3.size() - 1; i++) {
-		pw.println("<text id=\"légende-abcisse \" x=\""+ (xPositionbar.get(i)+positionOfLabels) + "\" y=\"360\" font-size=\"8\" text-anchor=\"center\">"+ a2.get(i) +"</text>");
+		int nBars = SVGUtils.getNumberOfBars(graph.points()); // nombre de barres du graphique
+		int positionOfLabels = (optWidth / nBars);
+		for (int i = 0; i < points().size() - 1; i++) {
+			pw.println("<text id=\"légende-abcisse \" x=\"" + (xPositionbar.get(i) + positionOfLabels)
+					+ "\" y=\"360\" font-size=\"8\" text-anchor=\"center\">" + graph.labels().get(i) + "</text>");
 		}
-		
+
 		/*
 		 * LEGENDS :
 		 */
-	ArrayList<String> legends = new ArrayList<String>();
-	legends = file.getKeys();
-	pw.println("<rect x=\"655\" y=\"12\" width=\"20\" height=\"10\" style=\"fill:rgb(200,50,100);stroke-width:1;stroke:rgb(0,0,0)\">  </rect>");
-	pw.println("<text id=\"légende du graphique\" x=\"680\" y=\"20\" font-size=\"12\">" + legends.get(1) + "</text>");
-	
-
+		ArrayList<String> legends = new ArrayList<String>();
+		legends = graph.legend();
+		pw.println(
+				"<rect x=\"655\" y=\"12\" width=\"20\" height=\"10\" style=\"fill:rgb(200,50,100);stroke-width:1;stroke:rgb(0,0,0)\">  </rect>");
+		pw.println(
+				"<text id=\"légende du graphique\" x=\"680\" y=\"20\" font-size=\"12\">" + legends.get(1) + "</text>");
 
 		pw.println("</svg>");
 		pw.close();

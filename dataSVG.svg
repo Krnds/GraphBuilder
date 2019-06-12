@@ -17,8 +17,8 @@
 <rect x="930" y="350" width="33" height="10.0" style="fill:rgb(200,50,100);stroke-width:1;stroke:rgb(0,0,0)" transform="translate(0,-10.0)" />
 <rect x="985" y="350" width="33" height="12.0" style="fill:rgb(200,50,100);stroke-width:1;stroke:rgb(0,0,0)" transform="translate(0,-12.0)" />
 <rect x="1040" y="350" width="33" height="15.0" style="fill:rgb(200,50,100);stroke-width:1;stroke:rgb(0,0,0)" transform="translate(0,-15.0)" />
-<line x1="30" y1="20" x2="30" y2="350" fill="none" shape-rendering="crispEdges" stroke="#ccc" stroke-dasharray="5,2" stroke-width="1" marker-end="url(#arrow)"/>
-<line x1="850" y1="350" x2="30" y2="350" fill="none" shape-rendering="crispEdges" stroke="#ccc" stroke-dasharray="5,2" stroke-width="1"> </line>
+<line x1="30" y1="20" x2="30" y2="350" fill="none" shape-rendering="crispEdges" stroke="#ccc" stroke-dasharray="5,2" stroke-width="1" marker-start="url(#arrow)" marker-end="url(#arrow)"/>"
+<line x1="850" y1="350" x2="30" y2="350" fill="none" shape-rendering="crispEdges" stroke="#ccc" stroke-dasharray="5,2" stroke-width="1"  marker-end="url(#markerArrow))"/>"
 <text id="légende-abcisse " x="51" y="360" font-size="8" text-anchor="center">2001</text>
 <text id="légende-abcisse " x="106" y="360" font-size="8" text-anchor="center">2003</text>
 <text id="légende-abcisse " x="161" y="360" font-size="8" text-anchor="center">2007</text>

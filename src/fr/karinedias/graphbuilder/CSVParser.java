@@ -38,7 +38,7 @@ public class CSVParser extends CSVReader {
 
 	}
 
-	// à quoi sert cette méthode ?
+	// méthode servant à regarder que le nom du fichier se fini bien en ".csv"
 	public String fileName() {
 
 		Scanner sc = new Scanner(System.in);
