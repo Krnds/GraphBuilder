@@ -1,49 +1,44 @@
-package fr.karinedias.graphbuilder;
+package fr.karinedias.graphbuilder.model;
 
 public class DataPoint {
 
 	/*
 	 * variables d'instance :
 	 */
-	
-	private String legend;
+
+	private String caption;
 	private Number point;
-	
+
 	/*
 	 * constructeur :
 	 */
-	
-	public DataPoint(String legend, Number point) {
-		
-		this.legend = legend;
+
+	public DataPoint() {
+	}
+
+	public DataPoint(String caption, Number point) {
+		this.caption = caption;
 		this.point = point;
 	}
-	
-	
+
 	/*
 	 * getters et setters :
 	 */
-	
 
-
-	public String getLegend() {
-		return legend;
+	public String getCaption() {
+		return caption;
 	}
 
-
-	public void setLegend(String legend) {
-		this.legend = legend;
+	public void setCaption(String legend) {
+		this.caption = legend;
 	}
-
 
 	public Number getPoint() {
 		return point;
 	}
 
-
 	public void setPoint(Number point) {
 		this.point = point;
 	}
-	
-	
+
 }

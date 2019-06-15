@@ -19,28 +19,7 @@ public class SVGbuilder {
 	private static String header = "<svg xmlns=\"http://www.w3.org/2000/svg\" version=\"1.1\" width=\"800\" height=\"400\">";
 	private String output = "dataSVG.svg";
 
-	// TODO: utile ici d'avoir un constructeur ?
-	public SVGbuilder(CSVParser csvFile) throws IOException {
-		
-		//TEST
-		ArrayList<String> a1 = new ArrayList<String>();
-		a1 = csvFile.getKeys();
 
-		// a2 = tableau pour l'axe des abscisses
-		ArrayList<String> a2 = new ArrayList<String>();
-		a2 = csvFile.getAxisX();
-
-		// a3 = tableau pour les points du graphe
-		ArrayList<String> a3 = new ArrayList<String>();
-		a3 = csvFile.getPoints();
-
-		PrintWriter pw = new PrintWriter(this.output);
-		pw.print(header);
-		
-		
-		
-	}
-	
 	
 	/*
 	 * MAIN METHOD
@@ -206,13 +185,3 @@ public class SVGbuilder {
 	
 }
 
-/*
- * TODO: inscrire les données en abcsisse TODO:
- * dessiner les barangles pour chaque donnée TODO: mettre 5 px avant l'axe des
- * ordonnées et entre chaque rectangle pour l'espace
- */
-
-//TODO: changer les balises chart par rect OK
-//TODO: réécrire la méthode dataSVG afin de rendre cela plus compréhensible
-//TODO: attention de gérer les bugs quand les calculs donnent 0 : si le max des données > hauteur (350px), changer le calcul de l'unité'
-//TODO: éviter toutes les répétitions de code, faire du refactoring

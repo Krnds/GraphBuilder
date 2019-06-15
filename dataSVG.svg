@@ -1,43 +1,33 @@
-<svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="800" height="400"><rect x="50" y="350" width="33" height="120.0" style="fill:rgb(200,50,100);stroke-width:1;stroke:rgb(0,0,0)" transform="translate(0,-120.0)" />
-<rect x="105" y="350" width="33" height="160.0" style="fill:rgb(200,50,100);stroke-width:1;stroke:rgb(0,0,0)" transform="translate(0,-160.0)" />
-<rect x="160" y="350" width="33" height="11.0" style="fill:rgb(200,50,100);stroke-width:1;stroke:rgb(0,0,0)" transform="translate(0,-11.0)" />
-<rect x="215" y="350" width="33" height="12.0" style="fill:rgb(200,50,100);stroke-width:1;stroke:rgb(0,0,0)" transform="translate(0,-12.0)" />
-<rect x="270" y="350" width="33" height="17.0" style="fill:rgb(200,50,100);stroke-width:1;stroke:rgb(0,0,0)" transform="translate(0,-17.0)" />
-<rect x="325" y="350" width="33" height="16.0" style="fill:rgb(200,50,100);stroke-width:1;stroke:rgb(0,0,0)" transform="translate(0,-16.0)" />
-<rect x="380" y="350" width="33" height="10.0" style="fill:rgb(200,50,100);stroke-width:1;stroke:rgb(0,0,0)" transform="translate(0,-10.0)" />
-<rect x="435" y="350" width="33" height="12.0" style="fill:rgb(200,50,100);stroke-width:1;stroke:rgb(0,0,0)" transform="translate(0,-12.0)" />
-<rect x="490" y="350" width="33" height="15.0" style="fill:rgb(200,50,100);stroke-width:1;stroke:rgb(0,0,0)" transform="translate(0,-15.0)" />
-<rect x="545" y="350" width="33" height="560.0" style="fill:rgb(200,50,100);stroke-width:1;stroke:rgb(0,0,0)" transform="translate(0,-560.0)" />
-<rect x="600" y="350" width="33" height="120.0" style="fill:rgb(200,50,100);stroke-width:1;stroke:rgb(0,0,0)" transform="translate(0,-120.0)" />
-<rect x="655" y="350" width="33" height="160.0" style="fill:rgb(200,50,100);stroke-width:1;stroke:rgb(0,0,0)" transform="translate(0,-160.0)" />
-<rect x="710" y="350" width="33" height="32.0" style="fill:rgb(200,50,100);stroke-width:1;stroke:rgb(0,0,0)" transform="translate(0,-32.0)" />
-<rect x="765" y="350" width="33" height="12.0" style="fill:rgb(200,50,100);stroke-width:1;stroke:rgb(0,0,0)" transform="translate(0,-12.0)" />
-<rect x="820" y="350" width="33" height="17.0" style="fill:rgb(200,50,100);stroke-width:1;stroke:rgb(0,0,0)" transform="translate(0,-17.0)" />
-<rect x="875" y="350" width="33" height="16.0" style="fill:rgb(200,50,100);stroke-width:1;stroke:rgb(0,0,0)" transform="translate(0,-16.0)" />
-<rect x="930" y="350" width="33" height="10.0" style="fill:rgb(200,50,100);stroke-width:1;stroke:rgb(0,0,0)" transform="translate(0,-10.0)" />
-<rect x="985" y="350" width="33" height="12.0" style="fill:rgb(200,50,100);stroke-width:1;stroke:rgb(0,0,0)" transform="translate(0,-12.0)" />
-<rect x="1040" y="350" width="33" height="15.0" style="fill:rgb(200,50,100);stroke-width:1;stroke:rgb(0,0,0)" transform="translate(0,-15.0)" />
-<line x1="30" y1="20" x2="30" y2="350" fill="none" shape-rendering="crispEdges" stroke="#ccc" stroke-dasharray="5,2" stroke-width="1" marker-start="url(#arrow)" marker-end="url(#arrow)"/>"
-<line x1="850" y1="350" x2="30" y2="350" fill="none" shape-rendering="crispEdges" stroke="#ccc" stroke-dasharray="5,2" stroke-width="1"  marker-end="url(#markerArrow))"/>"
-<text id="légende-abcisse " x="51" y="360" font-size="8" text-anchor="center">2001</text>
-<text id="légende-abcisse " x="106" y="360" font-size="8" text-anchor="center">2003</text>
-<text id="légende-abcisse " x="161" y="360" font-size="8" text-anchor="center">2007</text>
-<text id="légende-abcisse " x="216" y="360" font-size="8" text-anchor="center">1991</text>
-<text id="légende-abcisse " x="271" y="360" font-size="8" text-anchor="center">1992</text>
-<text id="légende-abcisse " x="326" y="360" font-size="8" text-anchor="center">1993</text>
-<text id="légende-abcisse " x="381" y="360" font-size="8" text-anchor="center">1994</text>
-<text id="légende-abcisse " x="436" y="360" font-size="8" text-anchor="center">1995</text>
-<text id="légende-abcisse " x="491" y="360" font-size="8" text-anchor="center">1996</text>
-<text id="légende-abcisse " x="546" y="360" font-size="8" text-anchor="center">1997</text>
-<text id="légende-abcisse " x="601" y="360" font-size="8" text-anchor="center">2001</text>
-<text id="légende-abcisse " x="656" y="360" font-size="8" text-anchor="center">2003</text>
-<text id="légende-abcisse " x="711" y="360" font-size="8" text-anchor="center">2007</text>
-<text id="légende-abcisse " x="766" y="360" font-size="8" text-anchor="center">1991</text>
-<text id="légende-abcisse " x="821" y="360" font-size="8" text-anchor="center">1992</text>
-<text id="légende-abcisse " x="876" y="360" font-size="8" text-anchor="center">1993</text>
-<text id="légende-abcisse " x="931" y="360" font-size="8" text-anchor="center">1994</text>
-<text id="légende-abcisse " x="986" y="360" font-size="8" text-anchor="center">1995</text>
-<text id="légende-abcisse " x="1041" y="360" font-size="8" text-anchor="center">1996</text>
-<rect x="655" y="12" width="20" height="10" style="fill:rgb(200,50,100);stroke-width:1;stroke:rgb(0,0,0)">  </rect>
-<text id="légende du graphique" x="680" y="20" font-size="12">pommes</text>
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="800" height="400"><rect x="50" y="350" width="43" height="312" style="fill:rgb(200,50,100);stroke-width:1;stroke:rgb(0,0,0)" transform="translate(0,-312)" />
+<rect x="105" y="350" width="43" height="182" style="fill:rgb(200,50,100);stroke-width:1;stroke:rgb(0,0,0)" transform="translate(0,-182)" />
+<rect x="160" y="350" width="43" height="52" style="fill:rgb(200,50,100);stroke-width:1;stroke:rgb(0,0,0)" transform="translate(0,-52)" />
+<rect x="215" y="350" width="43" height="286" style="fill:rgb(200,50,100);stroke-width:1;stroke:rgb(0,0,0)" transform="translate(0,-286)" />
+<rect x="270" y="350" width="43" height="130" style="fill:rgb(200,50,100);stroke-width:1;stroke:rgb(0,0,0)" transform="translate(0,-130)" />
+<rect x="325" y="350" width="43" height="104" style="fill:rgb(200,50,100);stroke-width:1;stroke:rgb(0,0,0)" transform="translate(0,-104)" />
+<rect x="380" y="350" width="43" height="52" style="fill:rgb(200,50,100);stroke-width:1;stroke:rgb(0,0,0)" transform="translate(0,-52)" />
+<rect x="435" y="350" width="43" height="104" style="fill:rgb(200,50,100);stroke-width:1;stroke:rgb(0,0,0)" transform="translate(0,-104)" />
+<rect x="490" y="350" width="43" height="130" style="fill:rgb(200,50,100);stroke-width:1;stroke:rgb(0,0,0)" transform="translate(0,-130)" />
+<rect x="545" y="350" width="43" height="338" style="fill:rgb(200,50,100);stroke-width:1;stroke:rgb(0,0,0)" transform="translate(0,-338)" />
+<rect x="600" y="350" width="43" height="208" style="fill:rgb(200,50,100);stroke-width:1;stroke:rgb(0,0,0)" transform="translate(0,-208)" />
+<rect x="655" y="350" width="43" height="78" style="fill:rgb(200,50,100);stroke-width:1;stroke:rgb(0,0,0)" transform="translate(0,-78)" />
+<rect x="710" y="350" width="43" height="104" style="fill:rgb(200,50,100);stroke-width:1;stroke:rgb(0,0,0)" transform="translate(0,-104)" />
+<rect x="765" y="350" width="43" height="260" style="fill:rgb(200,50,100);stroke-width:1;stroke:rgb(0,0,0)" transform="translate(0,-260)" />
+<rect x="820" y="350" width="43" height="182" style="fill:rgb(200,50,100);stroke-width:1;stroke:rgb(0,0,0)" transform="translate(0,-182)" />
+<line x1="850" y1="350" x2="30" y2="350" fill="none" shape-rendering="crispEdges" stroke="#ccc" stroke-dasharray="5,2" stroke-width="1"> </line>
+<line x1="30" y1="20" x2="30" y2="350" fill="none" shape-rendering="crispEdges" stroke="#ccc" stroke-dasharray="5,2" stroke-width="1" marker-start="url(#arrow)" marker-end="url(#arrow)"/>
+<text id="légende-abcisse " x="52" y="360" font-size="8" text-anchor="center">Antoine</text>
+<text id="légende-abcisse " x="107" y="360" font-size="8" text-anchor="center">Charles</text>
+<text id="légende-abcisse " x="162" y="360" font-size="8" text-anchor="center">Clara</text>
+<text id="légende-abcisse " x="217" y="360" font-size="8" text-anchor="center">Damien</text>
+<text id="légende-abcisse " x="272" y="360" font-size="8" text-anchor="center">Éléonore</text>
+<text id="légende-abcisse " x="327" y="360" font-size="8" text-anchor="center">Flora</text>
+<text id="légende-abcisse " x="382" y="360" font-size="8" text-anchor="center">Gaspard</text>
+<text id="légende-abcisse " x="437" y="360" font-size="8" text-anchor="center">Héloïse</text>
+<text id="légende-abcisse " x="492" y="360" font-size="8" text-anchor="center">Iliès</text>
+<text id="légende-abcisse " x="547" y="360" font-size="8" text-anchor="center">Juliette</text>
+<text id="légende-abcisse " x="602" y="360" font-size="8" text-anchor="center">Karim</text>
+<text id="légende-abcisse " x="657" y="360" font-size="8" text-anchor="center">Loréna</text>
+<text id="légende-abcisse " x="712" y="360" font-size="8" text-anchor="center">Maud</text>
+<text id="légende-abcisse " x="767" y="360" font-size="8" text-anchor="center">Maëlle</text>
+<text id="légende-abcisse " x="822" y="360" font-size="8" text-anchor="center">Nathan</text>
 </svg>

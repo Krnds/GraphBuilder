@@ -13,33 +13,6 @@ public class CSVReader {
 	public static String fileName =  null;
 	
 
-	public static String askFileName() {
-		
-		//TODO: pas besoin de valeur de retour
-
-		Scanner sc = new Scanner(System.in);
-
-		do {
-
-			try {
-				System.out.println("Nom du fichier CSV ?");
-				fileName = sc.next();
-				if (!correctName(fileName)) {
-					System.out.println(("nom incorrect"));
-				}
-				// utile d'utiliser des blocs try, catch ?
-				// que faire de mieux ?
-			} catch (IllegalArgumentException exc) {
-				System.out.println("Le nom du fichier n'est pas correct. Veuillez recommencer...");
-			} catch (NullPointerException exc) {
-				System.out.println("Veuillez entrer un nom de fichier svp.");
-			}
-		} while (!correctName(fileName));
-		sc.close();
-
-		return fileName;
-
-	}
 
 	// TODO: faire une méthode pour ouvrir un fichier CSV en entrée à
 	/*
@@ -49,15 +22,14 @@ public class CSVReader {
 
 	public static FileReader openCSV(String fileName) {
 
-		String CSVFile = askFileName(); // correct de le mettre ici
+
 		String line = null;
 
 		try {
-			FileReader fileReader = new FileReader(CSVFile);
+			FileReader fileReader = new FileReader(fileName);
 			BufferedReader bufferedReader = new BufferedReader(fileReader);
 
 			while ((line = bufferedReader.readLine()) != null) {
-				// appeler une méthode pour lire le contenu...
 			}
 			bufferedReader.close();
 			return fileReader;

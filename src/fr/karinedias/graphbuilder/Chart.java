@@ -16,8 +16,6 @@ public interface Chart {
 	public ArrayList<String>  legend() throws IOException;
 
 	public ArrayList<String>  labels() throws IOException;
-	
-	// TODO: faut-il la mettre dans l'interface puisqu'elle dépend en gros de chaque classe implémentée ?
-	//public void construction(Chart c) throws IOException;
+
 
 }

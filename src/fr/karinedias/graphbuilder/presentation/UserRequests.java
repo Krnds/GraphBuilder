@@ -12,29 +12,13 @@ import fr.karinedias.graphbuilder.utils.SVGWriter;
 public class UserRequests {
 
 	/*
-	 * TODO: largeur des barres ?
+	 * variables d'instance
 	 */
 	
-
-	public void SVGWriter(BarChart mysvg) throws IOException {
-		
-		CSVParser mycsv = new CSVParser();
-		mysvg = new BarChart(mycsv);
-		mysvg.construction(mysvg);
-		
-		//tests de la classe LineChart
-		LineChart mylinechart = new LineChart(mycsv);
-		mylinechart.construction();
-	}
+	private int barWidth;
+	private String barColor;
 	
-	//TESTS:
 	
-	public static void main(String[] args) throws IOException {
-		
-		CSVParser mycsv = new CSVParser();
-		LineChart mylinechart = new LineChart(mycsv);
-		mylinechart.construction();
-	}
 	
 	public String svgName() {
 		
@@ -50,12 +34,11 @@ public class UserRequests {
 	
 	private int barWidth() {
 		
-		int width;
 		Scanner sc = new Scanner(System.in);
 		System.out.println("Quelle est la largeur des barres souhaitée ?");
-		width = sc.nextInt();
+		this.barWidth = sc.nextInt();
 		
-		return width;
+		return barWidth;
 	}
 	
 	
@@ -68,4 +51,6 @@ public class UserRequests {
 		
 		return color;
 	}
+	
+	
 }

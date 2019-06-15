@@ -4,71 +4,20 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 
+import fr.karinedias.graphbuilder.model.Graph;
 import fr.karinedias.graphbuilder.utils.SVGUtils;
 
-public class LineChart implements Chart {
-
-	/*
-	 * CLASSE POUR LA CONSTRUCTION DES GRAPHIQUES LINÉAIRES
-	 */
-
-	/*
-	 * variables d'instance :
-	 */
+public class LineChart {
 
 	private static String svgHeader = "<svg xmlns=\"http://www.w3.org/2000/svg\" version=\"1.1\" width=\"800\" height=\"400\">";
-	private String outputFile = "linechart.svg"; // TODO : demander à l'utilisateur son nom
-	private CSVParser csvFile = new CSVParser();
-	private LineChart svgFile = new LineChart(this.csvFile); // TODO: nécessaire ? Correct ?
+	private String outputFile = "linechart.svg";
+	private Graph graph;
 
-	/*
-	 * constructeur :
-	 */
-
-	public LineChart(CSVParser csvFile) {
-		this.csvFile = csvFile;
-		LineChart svgFile = new LineChart(this.csvFile); // TODO: nécessaire ? correct ou pas ?
+	public LineChart(Graph graph) {
+		this.graph = graph;
 	}
 
-	@Override
-	public void axis() throws IOException {
-
-	}
-
-	@Override
-	public ArrayList<String> points() throws IOException {
-
-		// ArrayList comprenant tous les points du graphique sous forme de chaîne de
-		// caractères
-		ArrayList<String> points = new ArrayList<String>();
-		points = this.csvFile.getPoints();
-
-		return points;
-	}
-
-	@Override
-	public ArrayList<String> legend() throws IOException {
-
-		// ArrayList comprenant la ou les légendes du graphique
-		ArrayList<String> legend = new ArrayList<String>();
-		legend = this.csvFile.getKeys();
-
-		return legend;
-	}
-
-	@Override
-	public ArrayList<String> labels() throws IOException {
-
-		// ArrayList comprenant toutes les données affichées sur l'axe des abscisses
-		ArrayList<String> labels = new ArrayList<String>();
-		labels = this.csvFile.getAxisX();
-
-		return labels;
-	}
-
-	public void construction() throws IOException {
-
-		// TODO: enlever l'argument graph
+	public void draw() throws IOException {
 
 		// déclaration du PrinterWriter pour la construction du SVG
 		PrintWriter pw = new PrintWriter(this.outputFile);
@@ -79,14 +28,49 @@ public class LineChart implements Chart {
 		 */
 
 		// Position des points sur l'axe des abscisses dans l'arrayList
-		ArrayList<Integer> xPositionbar = new ArrayList<Integer>(svgFile.points().size());
-		int width = 50; // TODO: à demander à l'utilisateur, cf classe UserRequests
-		xPositionbar.addAll(SVGUtils.counter(svgFile.points().size(), width));
+		int nPoints = graph.getDataPoints().size();
+		ArrayList<Integer> xPositionbar = new ArrayList<Integer>(nPoints);
+		int width = 90; // TODO: à demander à l'utilisateur, cf classe CommandLineInterface
+		xPositionbar.addAll(SVGUtils.counter(nPoints, width));
 
-		ArrayList<String> points = new ArrayList<String>(); //ArrayList pour stocker toutes les valeurs des points du graphe
-		points.addAll(svgFile.points());
-		pw.println("<polyline points=\"15,80 29,50 43,60 57,30 71,40 85,15\" fill=\"blue\" stroke=\"grey\" marker-start=\"url(#dot) \" marker-mid=\"url(#dot)\"  marker-end=\"url(#dot)\" />");
+		ArrayList<String> points = new ArrayList<String>(); // ArrayList pour stocker toutes les valeurs des points du
+		points.add(graph.getIntValues().toString());
 
+		for (int i = 0; i < points.size(); i++) {
+			System.out.println(points.get(0));
+		}
+		
+		// Proportions correctes en largeur :
+		int optWidthPoint = SVGUtils.getOptimalWidthLines(graph);
+		System.out.println(optWidthPoint);
+
+		// TODO: à finir
+//		for (int i = 0; i < points.size(); i++) {
+//			int newValue = 0;
+//			if (Integer.parseInt(points.get(i)) <= 100)
+//				newValue = Integer.parseInt(points.get(i)) * optWidthPoint;
+//			points.set(i, String.valueOf(newValue));
+//			System.out.println(points.get(i));
+//		}
+
+		// Affichage des points sur le SVG selon le duo "x,y" avec x représentant la
+		// position sur l'axe des abscisses et y la position sur l'axe des ordonnées
+		// (valeur du fichier CSV)
+
+		pw.println("<polyline points=\"");
+		// boucle pour l'affichage de chaque point
+//		for (int i = 0; i < nPoints - 1; i++) {
+//			pw.print(xPositionbar.get(i) + "," + graph.getIntValues().get(i) * optWidthPoint + " ");
+//		}
+		
+		//AUTRE TEST POUR LES POINTS :
+		
+		for (int i = 0; i < nPoints - 1; i++) {
+			pw.print(xPositionbar.get(i) + "," + graph.getIntValues().get(i) * SVGUtils.getOptimalHeight2(graph) + " ");
+		}
+		
+		pw.println(
+				"\" fill=\"none\" stroke=\"black\" marker-start=\"url(#dot)\" marker-mid=\"url(#dot)\" marker-end=\"url(#dot)\" />");
 		/*
 		 * AXIS :
 		 */
@@ -99,24 +83,24 @@ public class LineChart implements Chart {
 		pw.println(
 				"<line x1=\"30\" y1=\"20\" x2=\"30\" y2=\"350\" fill=\"none\" shape-rendering=\"crispEdges\" stroke=\"#ccc\" stroke-dasharray=\"5,2\" stroke-width=\"1\" marker-start=\"url(#arrow)\" marker-end=\"url(#arrow)\"/>");
 
-
 		/*
 		 * LABELS OF POINTS :
 		 */
 
-		int nPoints = SVGUtils.getNumberOfBars(svgFile.points()); // nombre de points du graphique
-
-		
+		// TODO +++
 
 		/*
 		 * LEGENDS :
 		 */
+		
+		
 		ArrayList<String> legends = new ArrayList<String>();
-		legends = svgFile.legend();
+		legends = (ArrayList<String>) graph.getLabels(); // TODO: correct ?
+		
 		pw.println(
 				"<rect x=\"655\" y=\"12\" width=\"20\" height=\"10\" style=\"fill:rgb(200,50,100);stroke-width:1;stroke:rgb(0,0,0)\">  </rect>");
 		pw.println(
-				"<text id=\"légende du graphique\" x=\"680\" y=\"20\" font-size=\"12\">" + legends.get(1) + "</text>");
+				"<text id=\"légende du graphique\" x=\"680\" y=\"20\" font-size=\"12\">" + graph.getCaptions().get(1) + "</text>");
 
 		pw.println("</svg>");
 		pw.close();

@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="800" height="400"><polyline points="
+90,29 185,56 280,275 375,39 " fill="none" stroke="black" marker-start="url(#dot)" marker-mid="url(#dot)" marker-end="url(#dot)" />
+<line x1="850" y1="350" x2="30" y2="350" fill="none" shape-rendering="crispEdges" stroke="#ccc" stroke-dasharray="5,2" stroke-width="1"> </line>
+<line x1="30" y1="20" x2="30" y2="350" fill="none" shape-rendering="crispEdges" stroke="#ccc" stroke-dasharray="5,2" stroke-width="1" marker-start="url(#arrow)" marker-end="url(#arrow)"/>
+<rect x="655" y="12" width="20" height="10" style="fill:rgb(200,50,100);stroke-width:1;stroke:rgb(0,0,0)">  </rect>
+<text id="légende du graphique" x="680" y="20" font-size="12">prix</text>
+</svg>
