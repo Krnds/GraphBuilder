@@ -1,9 +1,18 @@
 package fr.karinedias.graphbuilder.exceptions;
 
-public class CSVFormatException extends Exception {
+import java.util.NoSuchElementException;
+
+public class CSVFormatException extends NoSuchElementException {
 	
 	public CSVFormatException() {
 		super();
 	}
+
+	public CSVFormatException(String s) {
+		super(s);
+		
+	}
+	
+	
 
 }

@@ -1,7 +1,11 @@
 <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="800" height="400"><polyline points="
-90,29 185,56 280,275 375,39 " fill="none" stroke="black" marker-start="url(#dot)" marker-mid="url(#dot)" marker-end="url(#dot)" />
+90,321 185,294 280,75 375,311 " fill="none" stroke="black" marker-start="url(#dot)" marker-mid="url(#dot)" marker-end="url(#dot)" />
 <line x1="850" y1="350" x2="30" y2="350" fill="none" shape-rendering="crispEdges" stroke="#ccc" stroke-dasharray="5,2" stroke-width="1"> </line>
 <line x1="30" y1="20" x2="30" y2="350" fill="none" shape-rendering="crispEdges" stroke="#ccc" stroke-dasharray="5,2" stroke-width="1" marker-start="url(#arrow)" marker-end="url(#arrow)"/>
+<text id="légende-abcisse " x="124" y="360" font-size="8" text-anchor="center">cafetière</text>
+<text id="légende-abcisse " x="219" y="360" font-size="8" text-anchor="center">chaise</text>
+<text id="légende-abcisse " x="314" y="360" font-size="8" text-anchor="center">sommier</text>
+<text id="légende-abcisse " x="409" y="360" font-size="8" text-anchor="center">lampe</text>
 <rect x="655" y="12" width="20" height="10" style="fill:rgb(200,50,100);stroke-width:1;stroke:rgb(0,0,0)">  </rect>
 <text id="légende du graphique" x="680" y="20" font-size="12">prix</text>
 </svg>

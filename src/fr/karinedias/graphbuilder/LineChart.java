@@ -65,8 +65,11 @@ public class LineChart {
 		
 		//AUTRE TEST POUR LES POINTS :
 		
+		//TODO il faut inverser les chiffres de la hauteur des points à dessiner : 
+		//ex:
+		int graphHeight = 350; //à voir
 		for (int i = 0; i < nPoints - 1; i++) {
-			pw.print(xPositionbar.get(i) + "," + graph.getIntValues().get(i) * SVGUtils.getOptimalHeight2(graph) + " ");
+			pw.print(xPositionbar.get(i) + "," + (graphHeight - (graph.getIntValues().get(i) * SVGUtils.getOptimalHeight2(graph))) + " ");
 		}
 		
 		pw.println(
@@ -83,11 +86,19 @@ public class LineChart {
 		pw.println(
 				"<line x1=\"30\" y1=\"20\" x2=\"30\" y2=\"350\" fill=\"none\" shape-rendering=\"crispEdges\" stroke=\"#ccc\" stroke-dasharray=\"5,2\" stroke-width=\"1\" marker-start=\"url(#arrow)\" marker-end=\"url(#arrow)\"/>");
 
+
+
 		/*
-		 * LABELS OF POINTS :
+		 * Légendes sur l'axe des abscisses correspondant aux données de la 1ère colonne du CSV :
 		 */
 
-		// TODO +++
+		int optWidth = SVGUtils.getOptimalWidthLines(graph);
+		int positionOfLabels = (optWidth / nPoints);
+		for (int i = 0; i < nPoints - 1; i++) {
+			pw.println("<text id=\"légende-abcisse \" x=\"" + (xPositionbar.get(i) + positionOfLabels)
+					+ "\" y=\"360\" font-size=\"8\" text-anchor=\"center\">" + graph.getLabels().get(i) + "</text>"); // TODO: changer
+		}
+		
 
 		/*
 		 * LEGENDS :
