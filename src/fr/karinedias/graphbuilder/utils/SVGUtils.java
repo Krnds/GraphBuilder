@@ -22,8 +22,8 @@ public class SVGUtils {
 		int margin = 5;
 		int stepValue = widthNumber + margin;
 
-		for (int i = 1; i < nbPoints - 1; i++) {
-			counter.add(i, (counter.get(i - 1) + stepValue));
+		for (int i = 1; i < nbPoints; i++) { //TODO: avant était initialisé à 1
+			counter.add(i, (counter.get(i - 1) + stepValue)); //TODO: avant il y avait counter.get(i - 1) + stepValue
 		}
 
 		return counter;

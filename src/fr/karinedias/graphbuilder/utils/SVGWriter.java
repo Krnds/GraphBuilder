@@ -5,14 +5,16 @@ import java.io.FileWriter;
 import java.io.IOException;
 
 public class SVGWriter {
+	
+	private static String directory = System.getProperty("user.dir");
+	private static String outputFile = "output.svg"; // TODO: à changer et à lier avec le fichier de sortie des classes LineChart et BarChart
+	private static String absolutePath = directory + File.separator + outputFile;
 
 	public static void writeFile() {
 		// donne le chemin du fichier en cours d'exécution :
-		String directory = System.getProperty("user.dir");
-		String outputFile = "test.svg"; // TODO: à changer
-		String absolutePath = directory + File.separator + outputFile;
+
 		// renvoie le fichier output dans le chemin en cours sans se soucier du
-		// séparateur (car dépend des OS
+		// séparateur (car dépend des OS)
 
 		// écriture du fichier :
 		try {
@@ -25,10 +27,10 @@ public class SVGWriter {
 		}
 	}
 
-	public static void main(String[] args) {
-
-		System.out.println(File.separator);
-
+	
+	//getter pour avoir l'emplacement du fichier :
+	public static String getPath() {
+		return absolutePath;
 	}
 
 }

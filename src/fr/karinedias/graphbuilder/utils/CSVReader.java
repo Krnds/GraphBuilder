@@ -1,9 +1,11 @@
 package fr.karinedias.graphbuilder.utils;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.nio.file.Path;
 import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -45,7 +47,7 @@ public class CSVReader {
 		
 	}
 
-	// method for checking if name of the CSV file is correct aka .csv :
+	// méthode qui vérifie que le nom du fichier se termine bien en ".csv"
 	public static boolean correctName(String str) {
 
 		Pattern p = Pattern.compile("(\\.(csv)){1}$");
@@ -58,6 +60,26 @@ public class CSVReader {
 //getter 
 	public String getFileName() {
 		return CSVReader.fileName; //correct de faire ça ?
+	}
+	
+	//TODO: à supprimer
+	public String getCSVPath() {
+		
+		String directory = System.getProperty("user.dir");
+		
+		String absolutePath = directory + File.separator + getFileName();
+		
+		return absolutePath;
+	}
+	
+	// méthode qui vérifie que le fichier csv donné en entrée existe bien
+	public static boolean fileExists(String f) {
+
+		String absolutePath = new File(f).getAbsoluteFile().getParentFile() + File.separator + "csv" + File.separator
+				+ f;
+		File absoluteFile = new File(absolutePath);
+		return absoluteFile.isFile();
+
 	}
 
 }

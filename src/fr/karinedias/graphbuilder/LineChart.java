@@ -10,7 +10,7 @@ import fr.karinedias.graphbuilder.utils.SVGUtils;
 public class LineChart {
 
 	private static String svgHeader = "<svg xmlns=\"http://www.w3.org/2000/svg\" version=\"1.1\" width=\"800\" height=\"400\">";
-	private String outputFile = "linechart.svg";
+	private String outputFile = "blabla.svg";
 	private Graph graph;
 
 	public LineChart(Graph graph) {
@@ -28,21 +28,29 @@ public class LineChart {
 		 */
 
 		// Position des points sur l'axe des abscisses dans l'arrayList
-		int nPoints = graph.getDataPoints().size();
+		int nPoints = graph.getDataPoints().size(); //nombre de points à représenter
 		ArrayList<Integer> xPositionbar = new ArrayList<Integer>(nPoints);
 		int width = 90; // TODO: à demander à l'utilisateur, cf classe CommandLineInterface
 		xPositionbar.addAll(SVGUtils.counter(nPoints, width));
+		
+		//TODO: à supprimer, pour le test
+		for (int i = 0; i < xPositionbar.size(); i++) {
+			System.out.println("Point n° " + i + ": "  + xPositionbar.get(i));
+		}
+		
 
-		ArrayList<String> points = new ArrayList<String>(); // ArrayList pour stocker toutes les valeurs des points du
+		ArrayList<String> points = new ArrayList<String>(nPoints); // ArrayList pour stocker toutes les valeurs des points du graphe
 		points.add(graph.getIntValues().toString());
 
+		//TODO: à supprimer, pour le test
 		for (int i = 0; i < points.size(); i++) {
-			System.out.println(points.get(0));
+			System.out.println("Point n° " + i + ": "  + points.get(0));
 		}
 		
 		// Proportions correctes en largeur :
 		int optWidthPoint = SVGUtils.getOptimalWidthLines(graph);
-		System.out.println(optWidthPoint);
+		//TODO: test à supprimer
+		System.out.println("largeur optimale = " + optWidthPoint + " pixels.");
 
 		// TODO: à finir
 //		for (int i = 0; i < points.size(); i++) {
@@ -68,14 +76,14 @@ public class LineChart {
 		//TODO il faut inverser les chiffres de la hauteur des points à dessiner : 
 		//ex:
 		int graphHeight = 350; //à voir
-		for (int i = 0; i < nPoints - 1; i++) {
+		for (int i = 0; i < nPoints; i++) {
 			pw.print(xPositionbar.get(i) + "," + (graphHeight - (graph.getIntValues().get(i) * SVGUtils.getOptimalHeight2(graph))) + " ");
 		}
 		
 		pw.println(
 				"\" fill=\"none\" stroke=\"black\" marker-start=\"url(#dot)\" marker-mid=\"url(#dot)\" marker-end=\"url(#dot)\" />");
 		/*
-		 * AXIS :
+		 * Dessin des axes du graphique :
 		 */
 
 		// axe X : abscisses

@@ -5,11 +5,12 @@ import java.io.PrintWriter;
 import java.util.ArrayList;
 
 import fr.karinedias.graphbuilder.model.Graph;
+import fr.karinedias.graphbuilder.presentation.UserRequests;
 import fr.karinedias.graphbuilder.utils.SVGUtils;
 
 public class BarChart {
 
-	/*
+	/* 
 	 * CLASSE POUR LA CONSTRUCTION DES DIAGRAMMES EN BARRE
 	 */
 
@@ -17,9 +18,10 @@ public class BarChart {
 	 * variables d'instance :
 	 */
 
-	private static String svgHeader = "<svg xmlns=\"http://www.w3.org/2000/svg\" version=\"1.1\" width=\"800\" height=\"400\">";
-	private String outputFile = "dataSVG.svg"; //TODO : demander à l'utilisateur son nom
+	private static String svgHeader = "<svg xmlns=\"http://www.w3.org/2000/svg\" version=\"1.1\" width=\""+ UserRequests.getWidth() + "\" height=\"400\">";
+	private String outputFile = "karine.svg"; //TODO : demander à l'utilisateur son nom
 	private Graph graph;
+	private String color, strokeWidth, barWidth, width, height; //valeurs que l'utilisateur peut choisir
 	
 	/*
 	 * constructeur :
@@ -51,7 +53,7 @@ public class BarChart {
 		for (int i = 0; i < nPoints - 1; i++) {
 			pw.println("<rect x=\"" + xPositionbar.get(i) + "\" y=\"350\" width=\"" + optWidth + "\" height=\""
 					+ (graph.getIntValues().get(i) * optHeight)
-					+ "\" style=\"fill:rgb(200,50,100);stroke-width:1;stroke:rgb(0,0,0)\" transform=\"translate(0,-"
+					+ "\" style=\"fill:" + UserRequests.getBarColor() + ";stroke-width:1;stroke:rgb(0,0,0)\" transform=\"translate(0,-"
 					+ (graph.getIntValues().get(i) * optHeight) + ")\" />");
 		}
 
