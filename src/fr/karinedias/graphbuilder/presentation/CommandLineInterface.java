@@ -28,7 +28,7 @@ public class CommandLineInterface {
 
 	private static String filename;
 	static Scanner sc = new Scanner(System.in);
-	static CSVParser csvParser = new CSVParser(getFilename()); //????
+	//static CSVParser csvParser = new CSVParser(getFilename()); //????
 	static int choice; // le choix fait par l'utilisateur représenté par un int
 	static int graphType = 0;
 
@@ -123,17 +123,19 @@ public class CommandLineInterface {
 		case 1:
 			graphType = 1;
 			
-			Graph graph = csvParser.buildGraph();
+			CSVParser csvParser1 = new CSVParser(getFilename());
+			Graph graph = csvParser1.buildGraph();
 			 BarChart barChart = new BarChart(graph);
 			 barChart.draw();
-			
 			menuChoice();
 			break;
 
 		case 2:
 			graphType = 2;
-			Graph linegraph = new Graph();
+			CSVParser csvparser2 = new CSVParser(getFilename());
+			Graph linegraph = csvparser2.buildGraph();
 			LineChart linechart = new LineChart(linegraph);
+			linechart.draw();
 			menuChoice();
 			break;
 
@@ -180,14 +182,12 @@ public class CommandLineInterface {
 		
 		switch (choice) {
 		case 1:
-			//répétition de CSVFileChoice :
 			CommandLineInterface cli = new CommandLineInterface(); // demande le nom du fichier et vérifie que
 			// c'est un fichier csv et qu'il existe
 			graphChoice();
 			break;
 			
 		case 2:
-			//créer une méthode pour afficher l'emplacement
 			System.out.println("Emplacement du fichier SVG de sortie : " + SVGWriter.getPath());
 			break;
 			
@@ -246,8 +246,33 @@ public class CommandLineInterface {
 
 		//TODO à écrire et à finir
 		String init = "Voici les paramètres du graphique de points qui peuvent être modifiés :";
-		System.out.println(init + "\n\t 1. Couleur" + "\n\t 2. Contour" + "\n\t 3. Hauteur du graphique"
-				+ "\n\t 3. Largeur du graphique");
+		System.out.println(init + "\n\t1. Couleur" + "\n\t2. Contour" + "\n\t3. Hauteur du graphique"
+				+ "\n\t4. Largeur du graphique" + "\n\t5. Quitter le menu");
+		
+		
+		choice = sc.nextInt();
+		sc.nextLine();
+		
+		switch (choice) {
+		case 1:
+			UserRequests.lineColor();
+			break;
+		case 2:
+			UserRequests.strokeWidth();
+			break;
+		case 3:
+			UserRequests.graphHeight();
+			break;
+		case 4:
+			UserRequests.graphWidth();
+			break;
+		case 5:
+			quit();
+			break;
+
+		default:
+			System.out.println("Entrée invalide.");
+		}
 
 	}
 

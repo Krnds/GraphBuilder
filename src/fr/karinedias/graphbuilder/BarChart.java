@@ -56,6 +56,7 @@ public class BarChart {
 					+ "\" style=\"fill:" + UserRequests.getBarColor() + ";stroke-width:1;stroke:rgb(0,0,0)\" transform=\"translate(0,-"
 					+ (graph.getIntValues().get(i) * optHeight) + ")\" />");
 		}
+		
 
 		/*
 		 * Axes du graphique :
@@ -96,9 +97,3 @@ public class BarChart {
 	}
 
 }
-
-// TODO: toutes les méthodes doivent renvoyer quelque chose ?
-// TODO: si qu'une seule légende à CHAQUE FOIS, changer la valeur de retour de
-// legend en String plutôt que l'AL de String
-// TODO: faut-il que je créée une classe fille pour la construction en elle-même
-// du SVG de BarGRaph ?

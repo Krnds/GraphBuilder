@@ -5,28 +5,26 @@ import java.util.Scanner;
 public class UserRequests {
 
 	/*
-	 * variables d'instance
+	 * variables d'instance avec leurs valeurs par défaut
 	 */
 
 	private static Scanner sc = new Scanner(System.in);
-	private static int barWidth = 40; // valeur par défaut
-	private static int strokeWidth = 1; // valeur par défaut
-	private static String barColor = "none"; // valeur par défaut;
-	private static String lineColor = "none"; // valeur par défaut
-	// TODO: leur assigner des valeurs par défaut :
-	private static int width;
-	private static int height;
+	private static int barWidth = 40; 
+	private static int strokeWidth = 1;
+	private static String barColor = "none";
+	private static String lineColor = "none";
+	private static int width = 800;
+	private static int height = 400;
 
 	public static String svgName() {
 
-		String output = "out.svg"; // nom de base
+		String output = "out.svg"; // nom de base TODO: à changer 
 		System.out.println("Quel est le nom du fichier de sortie ?");
 		output = sc.nextLine();
 		return output;
 	}
 
 	static void barWidth() {
-		 //TODO: essai
 		System.out.println("Quelle est la largeur des barres souhaitée (en pixels) ?");
 		setBarWidth(sc.nextInt());
 		sc.nextLine();
@@ -54,7 +52,7 @@ public class UserRequests {
 
 	static void lineColor() {
 		System.out.println(
-				"Quelle est la couleur des lignes ? Veuillez indiquer la couleur en anglais ou en format rgb(XXX, YYY, ZZZ)");
+				"Quelle est la couleur des lignes ? Veuillez indiquer la couleur en anglais/héxadécimal ou format rgb");
 		setLineColor(sc.nextLine());
 	}
 	
@@ -81,6 +79,8 @@ public class UserRequests {
 
 	public static void setBarColor(String barColor) {
 		UserRequests.barColor = barColor;
+		System.out.println("La couleur choisie est : " + UserRequests.barColor);
+		System.out.println(getBarColor());
 	}
 
 	public static void setLineColor(String lineColor) {
