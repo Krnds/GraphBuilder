@@ -1,1 +1,6 @@
-fr.karinedias.graphbuilder
+fr.karinedias.graphbuilder.chartmaker
+fr.karinedias.graphbuilder.exceptions
+fr.karinedias.graphbuilder.model
+fr.karinedias.graphbuilder.parser
+fr.karinedias.graphbuilder.presentation
+fr.karinedias.graphbuilder.utils

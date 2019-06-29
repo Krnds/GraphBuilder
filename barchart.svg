@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="800" height="350"><rect x="50" y="350" width="46" height="0" style="fill:orange;stroke-width:1;stroke:rgb(0,0,0)" transform="translate(0,-0)" />
+<rect x="105" y="350" width="46" height="0" style="fill:orange;stroke-width:1;stroke:rgb(0,0,0)" transform="translate(0,-0)" />
+<rect x="160" y="350" width="46" height="0" style="fill:orange;stroke-width:1;stroke:rgb(0,0,0)" transform="translate(0,-0)" />
+<rect x="215" y="350" width="46" height="0" style="fill:orange;stroke-width:1;stroke:rgb(0,0,0)" transform="translate(0,-0)" />
+<rect x="270" y="350" width="46" height="0" style="fill:orange;stroke-width:1;stroke:rgb(0,0,0)" transform="translate(0,-0)" />
+<rect x="325" y="350" width="46" height="0" style="fill:orange;stroke-width:1;stroke:rgb(0,0,0)" transform="translate(0,-0)" />
+<rect x="380" y="350" width="46" height="0" style="fill:orange;stroke-width:1;stroke:rgb(0,0,0)" transform="translate(0,-0)" />
+<rect x="435" y="350" width="46" height="0" style="fill:orange;stroke-width:1;stroke:rgb(0,0,0)" transform="translate(0,-0)" />
+<rect x="490" y="350" width="46" height="0" style="fill:orange;stroke-width:1;stroke:rgb(0,0,0)" transform="translate(0,-0)" />
+<rect x="545" y="350" width="46" height="0" style="fill:orange;stroke-width:1;stroke:rgb(0,0,0)" transform="translate(0,-0)" />
+<rect x="600" y="350" width="46" height="0" style="fill:orange;stroke-width:1;stroke:rgb(0,0,0)" transform="translate(0,-0)" />
+<rect x="655" y="350" width="46" height="0" style="fill:orange;stroke-width:1;stroke:rgb(0,0,0)" transform="translate(0,-0)" />
+<rect x="710" y="350" width="46" height="0" style="fill:orange;stroke-width:1;stroke:rgb(0,0,0)" transform="translate(0,-0)" />
+<line x1="850" y1="350" x2="30" y2="350" fill="none" shape-rendering="crispEdges" stroke="#ccc" stroke-dasharray="5,2" stroke-width="1"> </line>
+<line x1="30" y1="20" x2="30" y2="350" fill="none" shape-rendering="crispEdges" stroke="#ccc" stroke-dasharray="5,2" stroke-width="1" marker-start="url(#arrow)" marker-end="url(#arrow)"/>
+<text id="légende-abcisse " x="53" y="360" font-size="8" text-anchor="center">2007</text>
+<text id="légende-abcisse " x="108" y="360" font-size="8" text-anchor="center">1991</text>
+<text id="légende-abcisse " x="163" y="360" font-size="8" text-anchor="center">1992</text>
+<text id="légende-abcisse " x="218" y="360" font-size="8" text-anchor="center">1993</text>
+<text id="légende-abcisse " x="273" y="360" font-size="8" text-anchor="center">1994</text>
+<text id="légende-abcisse " x="328" y="360" font-size="8" text-anchor="center">1995</text>
+<text id="légende-abcisse " x="383" y="360" font-size="8" text-anchor="center">1996</text>
+<text id="légende-abcisse " x="438" y="360" font-size="8" text-anchor="center">2007</text>
+<text id="légende-abcisse " x="493" y="360" font-size="8" text-anchor="center">1991</text>
+<text id="légende-abcisse " x="548" y="360" font-size="8" text-anchor="center">1992</text>
+<text id="légende-abcisse " x="603" y="360" font-size="8" text-anchor="center">1993</text>
+<text id="légende-abcisse " x="658" y="360" font-size="8" text-anchor="center">1994</text>
+<text id="légende-abcisse " x="713" y="360" font-size="8" text-anchor="center">1995</text>
+<rect x="655" y="12" width="20" height="10" fill="orange" stroke-width="1" stroke="rgb(0,0,0)">  </rect>
+<text id="légende du graphique" x="680" y="20" font-size="12">pommes</text>
+</svg>

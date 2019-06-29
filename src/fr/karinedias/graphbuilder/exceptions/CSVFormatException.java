@@ -2,6 +2,7 @@ package fr.karinedias.graphbuilder.exceptions;
 
 import java.util.NoSuchElementException;
 
+@SuppressWarnings("serial")
 public class CSVFormatException extends NoSuchElementException {
 	
 	public CSVFormatException() {

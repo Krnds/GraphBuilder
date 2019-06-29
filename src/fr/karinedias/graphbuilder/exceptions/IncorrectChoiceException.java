@@ -1,5 +1,6 @@
 package fr.karinedias.graphbuilder.exceptions;
 
+@SuppressWarnings("serial")
 public class IncorrectChoiceException extends IllegalArgumentException {
 
 	public IncorrectChoiceException() {

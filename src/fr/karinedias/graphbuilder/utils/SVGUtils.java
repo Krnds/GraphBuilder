@@ -1,9 +1,8 @@
 package fr.karinedias.graphbuilder.utils;
 
 import java.util.ArrayList;
-import java.util.Collections;
-
-import fr.karinedias.graphbuilder.model.Graph;
+import fr.karinedias.graphbuilder.model.BarChart;
+import fr.karinedias.graphbuilder.model.LineChart;
 
 public class SVGUtils {
 
@@ -41,15 +40,15 @@ public class SVGUtils {
 	// méthode calculant la largeur optimale des barres du graphe selon leur nombre,
 	// les marges à droite et à gauche des barres ainsi que la largeur totale du
 	// graphique.
-	public static int getOptimalWidth(Graph graph) {
+	public static int getOptimalWidthBarChart(BarChart barchart) {
 
 		// dynamiser la largeur des barres :
 		int rightMargin = 30;
 		int leftMargin = 50;
-		int graphWidth = 850; // à voir
+		int graphWidth = barchart.getWidth(); // valeur par défaut : 850 px
 		int marginBetweenBars = 5;
 
-		int nPoints = graph.getDataPoints().size();
+		int nPoints = barchart.getDataPoints().size();
 
 		int optimalWidth = (graphWidth - (nPoints * marginBetweenBars) - leftMargin - rightMargin) / nPoints;
 
@@ -57,44 +56,47 @@ public class SVGUtils {
 	}
 	
 	//méthode calculant la largeur optimale des lignes du diagramme de points selon leur nombre et la largeur totale du graphe:
-	public static int getOptimalWidthLines(Graph graph) {
+	public static int getOptimalWidthLineChart(LineChart linechart) {
 		
-		int nPoints = graph.getDataPoints().size();
-		int graphWidth = 850; //à voir ?
+		int nPoints = linechart.getDataPoints().size();
+		int graphWidth = linechart.getWidth(); //valeur par défaut : 850 px
 		int optimalWidth = graphWidth / nPoints;
 		return optimalWidth;
 	}
 
 	// méthode calculant la hauteur optimale des barres du graphe suivant la valeur
 	// maximale du set de données du fichier CSV donné en argument
-	public static int getOptimalHeight(Graph graph) {
 
-		int maxValue = graph.getMax();
-		int graphHeight = 350; // à voir
-		int optimalHeight;
-
-		if (maxValue >= graphHeight) {
-			optimalHeight = maxValue / graphHeight;
-		} else {
-			optimalHeight = graphHeight / maxValue;
-		}
-
-		return optimalHeight;
-	}
 	
-	//TEST pour recalculer autrement la valeur d'une "unité" des données en pixels :
-	public static int getOptimalHeight2(Graph graph) {
+	//recalculer la valeur d'une "unité" des données en pixels :
+	public static int getOptimalHeightBarChart(BarChart barchart) {
 		
 		int graphHeight = 350;
-		int maxValue = graph.getMax();
-		int minValue = graph.getMin();
+		int maxValue = barchart.getMax();
+		int minValue = barchart.getMin();
 		int intervalValues = maxValue - minValue;
 		int optimalHeight = intervalValues / graphHeight;
 		
+		if (maxValue >= graphHeight) {
+			optimalHeight = maxValue / graphHeight;
+		}
+		return optimalHeight;
+	}
+	
+	
+	public static int getOptimalHeightLineChart(LineChart linechart) {
+		
+		int graphHeight = 350;
+		int maxValue = linechart.getMax();
+		int minValue = linechart.getMin();
+		int intervalValues = maxValue - minValue;
+		int optimalHeight = intervalValues / graphHeight;
+		
+		if (maxValue >= graphHeight) {
+			optimalHeight = maxValue / graphHeight;
+		}
 		return optimalHeight;
 	}
 
-	// TODO: recalculer la hauteur max car quand grande données, la barre la plus
-	// haute dépasse...
 
 }
